@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportEventReminder", "Sport
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportEventReminder.Domain", "SportEventReminder.Domain\SportEventReminder.Domain.csproj", "{16770BA2-CB1F-4A81-9DDF-3698EA1B6E4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportEventReminder.EntityFramework", "SportEventReminder.EntityFramework\SportEventReminder.EntityFramework.csproj", "{75CDBA36-C19B-45BF-AEEB-DA194ACE1AB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportEventReminder.ScheduleService", "SportEventReminder.ScheduleService\SportEventReminder.ScheduleService.csproj", "{249299B4-4AA1-43A7-A08A-96C5605F991C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{16770BA2-CB1F-4A81-9DDF-3698EA1B6E4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16770BA2-CB1F-4A81-9DDF-3698EA1B6E4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16770BA2-CB1F-4A81-9DDF-3698EA1B6E4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75CDBA36-C19B-45BF-AEEB-DA194ACE1AB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75CDBA36-C19B-45BF-AEEB-DA194ACE1AB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75CDBA36-C19B-45BF-AEEB-DA194ACE1AB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75CDBA36-C19B-45BF-AEEB-DA194ACE1AB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{249299B4-4AA1-43A7-A08A-96C5605F991C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{249299B4-4AA1-43A7-A08A-96C5605F991C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{249299B4-4AA1-43A7-A08A-96C5605F991C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{249299B4-4AA1-43A7-A08A-96C5605F991C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
