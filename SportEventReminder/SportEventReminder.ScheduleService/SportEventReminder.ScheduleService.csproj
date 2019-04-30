@@ -2,6 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
+    <ApplicationIcon />
+    <OutputType>Exe</OutputType>
+    <StartupObject />
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SportEventReminder.EntityFramework\SportEventReminder.EntityFramework.csproj" />
+    <ProjectReference Include="..\SportEventReminder.Repositories\SportEventReminder.Repositories.csproj" />
+    <ProjectReference Include="..\SportEventReminder.UnitOfWork\SportEventReminder.UnitOfWork.csproj" />
+  </ItemGroup>
 
 </Project>

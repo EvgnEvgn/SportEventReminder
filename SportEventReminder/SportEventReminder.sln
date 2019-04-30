@@ -3,13 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.539
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportEventReminder", "SportEventReminder\SportEventReminder.csproj", "{1F02BE29-492C-4BF5-8004-A7821A4F2D34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportEventReminder", "SportEventReminder\SportEventReminder.csproj", "{1F02BE29-492C-4BF5-8004-A7821A4F2D34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportEventReminder.Domain", "SportEventReminder.Domain\SportEventReminder.Domain.csproj", "{16770BA2-CB1F-4A81-9DDF-3698EA1B6E4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportEventReminder.Domain", "SportEventReminder.Domain\SportEventReminder.Domain.csproj", "{16770BA2-CB1F-4A81-9DDF-3698EA1B6E4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportEventReminder.EntityFramework", "SportEventReminder.EntityFramework\SportEventReminder.EntityFramework.csproj", "{75CDBA36-C19B-45BF-AEEB-DA194ACE1AB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportEventReminder.EntityFramework", "SportEventReminder.EntityFramework\SportEventReminder.EntityFramework.csproj", "{75CDBA36-C19B-45BF-AEEB-DA194ACE1AB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportEventReminder.ScheduleService", "SportEventReminder.ScheduleService\SportEventReminder.ScheduleService.csproj", "{249299B4-4AA1-43A7-A08A-96C5605F991C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportEventReminder.ScheduleService", "SportEventReminder.ScheduleService\SportEventReminder.ScheduleService.csproj", "{249299B4-4AA1-43A7-A08A-96C5605F991C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportEventReminder.Repositories", "SportEventReminder.Repositories\SportEventReminder.Repositories.csproj", "{CCC180B7-1C8B-4B03-B29A-6E265FE8D690}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportEventReminder.ImportService", "SportEventReminder.ImportService\SportEventReminder.ImportService.csproj", "{19A7058C-9BD7-4561-BE22-A5AE8D2E8DC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportEventReminder.UnitOfWork", "SportEventReminder.UnitOfWork\SportEventReminder.UnitOfWork.csproj", "{D1D560F2-F7EF-4DF1-B8B3-45F35EA94F4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +39,18 @@ Global
 		{249299B4-4AA1-43A7-A08A-96C5605F991C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{249299B4-4AA1-43A7-A08A-96C5605F991C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{249299B4-4AA1-43A7-A08A-96C5605F991C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCC180B7-1C8B-4B03-B29A-6E265FE8D690}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCC180B7-1C8B-4B03-B29A-6E265FE8D690}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCC180B7-1C8B-4B03-B29A-6E265FE8D690}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCC180B7-1C8B-4B03-B29A-6E265FE8D690}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19A7058C-9BD7-4561-BE22-A5AE8D2E8DC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19A7058C-9BD7-4561-BE22-A5AE8D2E8DC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19A7058C-9BD7-4561-BE22-A5AE8D2E8DC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19A7058C-9BD7-4561-BE22-A5AE8D2E8DC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1D560F2-F7EF-4DF1-B8B3-45F35EA94F4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1D560F2-F7EF-4DF1-B8B3-45F35EA94F4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1D560F2-F7EF-4DF1-B8B3-45F35EA94F4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1D560F2-F7EF-4DF1-B8B3-45F35EA94F4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

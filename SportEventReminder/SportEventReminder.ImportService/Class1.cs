@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SportEventReminder.ScheduleService
+namespace SportEventReminder.ImportService
 {
     public class Class1
     {
