@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using SportEventReminder.Repositories;
 using SportEventReminder.Repositories.Base;
+using SportEventReminder.Repositories.Interfaces;
 
 namespace SportEventReminder.UnitOfWork
 {
@@ -14,6 +15,6 @@ namespace SportEventReminder.UnitOfWork
         Task<int> CommitAsync();
         Task<int> CommitAsync(CancellationToken cancellationToken);
 
-        IGenericRepository<TEntity> GetRepository<TEntity>() where TEntity : class;
+        ITeamRepository TeamRepository { get; }
     }
 }

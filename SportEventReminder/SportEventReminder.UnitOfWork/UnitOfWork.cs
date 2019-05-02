@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SportEventReminder.EntityFramework;
 using SportEventReminder.Repositories;
 using SportEventReminder.Repositories.Base;
+using SportEventReminder.Repositories.Interfaces;
 
 namespace SportEventReminder.UnitOfWork
 {
@@ -13,10 +14,15 @@ namespace SportEventReminder.UnitOfWork
         private readonly SportEventReminderDbContext _dbContext;
         private readonly IServiceProvider _serviceProcProvider;
 
-        public UnitOfWork(SportEventReminderDbContext dbContext, IServiceProvider serviceProvider)
+        public ITeamRepository TeamRepository { get; }
+
+        public UnitOfWork(SportEventReminderDbContext dbContext, 
+                          IServiceProvider serviceProvider, 
+                          ITeamRepository teamRepository)
         {
             _dbContext = dbContext;
             _serviceProcProvider = serviceProvider;
+            TeamRepository = teamRepository;
         }
 
         public int Commit()
@@ -32,11 +38,6 @@ namespace SportEventReminder.UnitOfWork
         public async Task<int> CommitAsync(CancellationToken cancellationToken)
         {
             return await _dbContext.SaveChangesAsync(cancellationToken);
-        }
-
-        public IGenericRepository<TEntity> GetRepository<TEntity>() where TEntity : class
-        {
-            return _serviceProcProvider.GetService<IGenericRepository<TEntity>>();
         }
     }
 }

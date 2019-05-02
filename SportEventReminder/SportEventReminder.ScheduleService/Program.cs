@@ -1,10 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.IO;
 using Microsoft.Extensions.DependencyInjection;
-using SportEventReminder.EntityFramework;
-using SportEventReminder.Repositories.Base;
 using SportEventReminder.Repositories.Interfaces;
 using SportEventReminder.Repositories.Repositories;
 using SportEventReminder.UnitOfWork;
+using Topshelf;
+using Microsoft.Extensions.Configuration;
+using SportEventReminder.ScheduleService.Extensions;
+using Topshelf.HostConfigurators;
 
 namespace SportEventReminder.ScheduleService
 {
@@ -12,19 +15,22 @@ namespace SportEventReminder.ScheduleService
     {
         private static void Main(string[] args)
         {
+            var configurationBuilder = new ConfigurationBuilder();
+            configurationBuilder.AddJsonFile("appSettings.json");
+            IConfiguration configuration = configurationBuilder.Build();
+
             var serviceCollection = new ServiceCollection();
-            serviceCollection.AddTransient<IUnitOfWork, UnitOfWork.UnitOfWork>();
-            serviceCollection.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            //serviceCollection.AddTransient<ITeamRepository, TeamRepository>();
-            
-            serviceCollection.AddDbContext<SportEventReminderDbContext>(options =>
-                options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=SportEventReminderTestDb;Trusted_Connection=True;"));
+            serviceCollection.ConfigureServices(configuration);
 
             var serviceProvider = serviceCollection.BuildServiceProvider();
-            var uow = serviceProvider.GetService<IUnitOfWork>();
-            var repo = uow.GetRepository<Team>();
 
+            var serviceRunner = HostFactory.Run(cfg =>
+            {
+                cfg.Service(x => serviceProvider.GetService<ScheduleService>());
+            });
 
+            var exitCode = (int)Convert.ChangeType(serviceRunner, serviceRunner.GetTypeCode());
+            Environment.ExitCode = exitCode;
         }
     }
 }

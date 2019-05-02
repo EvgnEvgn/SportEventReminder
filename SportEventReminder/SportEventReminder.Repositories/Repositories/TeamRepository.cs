@@ -13,10 +13,5 @@ namespace SportEventReminder.Repositories.Repositories
         {
 
         }
-
-        public void SpecialForTeamRepository()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

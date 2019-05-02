@@ -18,6 +18,7 @@ namespace SportEventReminder.EntityFramework
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Team>().HasIndex().IsUnique();
             modelBuilder.ApplyConfiguration(new AreaConfiguration());
             modelBuilder.ApplyConfiguration(new ExternalSourceConfiguration());
             modelBuilder.ApplyConfiguration(new TeamConfiguration());

@@ -9,7 +9,7 @@ using SportEventReminder.EntityFramework;
 
 namespace SportEventReminder.Repositories.Base
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : EntityBase<int>
+    public class GenericRepository<T> : IGenericRepository<T> where T : EntityBase<int>, new()
     {
         private SportEventReminderDbContext _context;
 
@@ -42,12 +42,6 @@ namespace SportEventReminder.Repositories.Base
         {
             _context.Set<T>().Add(t);
             return t;
-        }
-
-        public virtual async Task<T> AddAsync(T t)
-        {
-             await _context.Set<T>().AddAsync(t);
-             return t;
         }
 
         public virtual T Find(Expression<Func<T, bool>> match)

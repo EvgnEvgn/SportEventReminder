@@ -9,7 +9,6 @@ namespace SportEventReminder.Repositories.Base
     public interface IGenericRepository<T>
     {
         T Add(T t);
-        Task<T> AddAsync(T t);
         int Count();
         Task<int> CountAsync();
         void Delete(T entity);
