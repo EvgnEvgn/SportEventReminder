@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using AutoMapper;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SportEventReminder.ImportService.Extensions;
@@ -14,7 +15,8 @@ namespace SportEventReminder.ScheduleService.Extensions
         {
             return serviceCollection
                 .AddSingleton<ScheduleService>()
-                .AddImportServices(cfg);
+                .AddImportServices(cfg)
+                .AddAutoMapper();
         }
     }
 }

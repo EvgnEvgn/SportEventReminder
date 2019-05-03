@@ -13,9 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportEventReminder.Schedule
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportEventReminder.Repositories", "SportEventReminder.Repositories\SportEventReminder.Repositories.csproj", "{CCC180B7-1C8B-4B03-B29A-6E265FE8D690}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportEventReminder.ImportService", "SportEventReminder.ImportService\SportEventReminder.ImportService.csproj", "{19A7058C-9BD7-4561-BE22-A5AE8D2E8DC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportEventReminder.ImportService", "SportEventReminder.ImportService\SportEventReminder.ImportService.csproj", "{19A7058C-9BD7-4561-BE22-A5AE8D2E8DC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportEventReminder.UnitOfWork", "SportEventReminder.UnitOfWork\SportEventReminder.UnitOfWork.csproj", "{D1D560F2-F7EF-4DF1-B8B3-45F35EA94F4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportEventReminder.UnitOfWork", "SportEventReminder.UnitOfWork\SportEventReminder.UnitOfWork.csproj", "{D1D560F2-F7EF-4DF1-B8B3-45F35EA94F4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportEventReminder.Common", "SportEventReminder.Common\SportEventReminder.Common.csproj", "{B858B728-FD94-486F-AC3E-97D10EF97941}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportEventReminder.DTO", "SportEventReminder.DTO\SportEventReminder.DTO.csproj", "{07580ECD-83E1-4602-914C-1A7AB08BB8D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,14 @@ Global
 		{D1D560F2-F7EF-4DF1-B8B3-45F35EA94F4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1D560F2-F7EF-4DF1-B8B3-45F35EA94F4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1D560F2-F7EF-4DF1-B8B3-45F35EA94F4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B858B728-FD94-486F-AC3E-97D10EF97941}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B858B728-FD94-486F-AC3E-97D10EF97941}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B858B728-FD94-486F-AC3E-97D10EF97941}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B858B728-FD94-486F-AC3E-97D10EF97941}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07580ECD-83E1-4602-914C-1A7AB08BB8D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07580ECD-83E1-4602-914C-1A7AB08BB8D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07580ECD-83E1-4602-914C-1A7AB08BB8D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07580ECD-83E1-4602-914C-1A7AB08BB8D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -8,11 +8,10 @@ using SportEventReminder.Repositories.Interfaces;
 
 namespace SportEventReminder.Repositories.Repositories
 {
-    public class TeamRepository: GenericRepository<Team>, ITeamRepository
+    public class ExternalSourceIntegrationRepository : GenericRepository<ExternalSourceIntegration>, IExternalSourceIntegrationRepository
     {
-        public TeamRepository(SportEventReminderDbContext context) : base(context)
+        public ExternalSourceIntegrationRepository(SportEventReminderDbContext context) : base(context)
         {
-
         }
     }
 }

@@ -1,14 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using SportEventReminder.Domain;
 
 namespace SportEventReminder.EntityFramework.DomainConfigurations
 {
-    public class ExternalSourceConfiguration : IEntityTypeConfiguration<ExternalSource>
+    public class ExternalSourceConfiguration : IEntityTypeConfiguration<ExternalSourceIntegration>
     {
-        public void Configure(EntityTypeBuilder<ExternalSource> builder)
+        public void Configure(EntityTypeBuilder<ExternalSourceIntegration> builder)
         {
-            builder.Property(p => p.Name).IsRequired().HasMaxLength(100);
-            builder.Property(p => p.Url).HasMaxLength(100);
+            builder.Property(x => x.ExternalSource);
+            builder.Property(x => x.ExternalObjectId);
+            builder.Property(x => x.ObjectId);
+            builder.Property(x => x.ObjectType);
         }
     }
 }

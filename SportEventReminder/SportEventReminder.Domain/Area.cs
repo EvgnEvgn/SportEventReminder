@@ -2,6 +2,8 @@
 {
     public class Area : EntityBase<int>
     {
-        public string CountryName { get; set; }
+        public string Name { get; set; }
+
+        public string ParentArea { get; set; }
     }
 }

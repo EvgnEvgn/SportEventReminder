@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using SportEventReminder.Domain;
 using SportEventReminder.EntityFramework;
@@ -8,11 +9,11 @@ using SportEventReminder.Repositories.Interfaces;
 
 namespace SportEventReminder.Repositories.Repositories
 {
-    public class TeamRepository: GenericRepository<Team>, ITeamRepository
+    public class AreaRepository : GenericRepository<Area>, IAreaRepository
     {
-        public TeamRepository(SportEventReminderDbContext context) : base(context)
+        public AreaRepository(SportEventReminderDbContext context) : base(context)
         {
-
         }
+    
     }
 }

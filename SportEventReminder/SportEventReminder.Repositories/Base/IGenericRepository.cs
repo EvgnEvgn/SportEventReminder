@@ -29,5 +29,6 @@ namespace SportEventReminder.Repositories.Base
         Task<int> SaveAsync();
         T Update(T t, object key);
         Task<T> UpdateAsync(T t, object key);
+        T AddOrUpdate(T t);
     }
 }

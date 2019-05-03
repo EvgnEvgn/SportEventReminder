@@ -16,5 +16,7 @@ namespace SportEventReminder.UnitOfWork
         Task<int> CommitAsync(CancellationToken cancellationToken);
 
         ITeamRepository TeamRepository { get; }
+        IAreaRepository AreaRepository { get; }
+        IExternalSourceIntegrationRepository ExternalSourceIntegrationRepository { get; }
     }
 }

@@ -14,7 +14,9 @@ namespace SportEventReminder.UnitOfWork.Extensions
             return serviceCollection
                 .AddDbContext<SportEventReminderDbContext>(options => options.UseSqlServer(cfg.GetDefaultConnectionString()))
                 .AddScoped<IUnitOfWork, UnitOfWork>()
-                .AddScoped<ITeamRepository, TeamRepository>();
+                .AddScoped<ITeamRepository, TeamRepository>()
+                .AddScoped<IAreaRepository, AreaRepository>()
+                .AddScoped<IExternalSourceIntegrationRepository, ExternalSourceIntegrationRepository>();
         }
 
         public static string GetDefaultConnectionString(this IConfiguration configuration)

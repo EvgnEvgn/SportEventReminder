@@ -8,7 +8,10 @@ namespace SportEventReminder.EntityFramework.DomainConfigurations
     {
         public void Configure(EntityTypeBuilder<Area> builder)
         {
-            builder.Property(p => p.CountryName).IsRequired().HasMaxLength(100);
+            builder.HasIndex(p => p.Name).IsUnique();
+            builder.HasAlternateKey(p => p.Name);
+            builder.Property(p => p.Name).IsRequired().HasMaxLength(100);
+            builder.Property(p => p.ParentArea).HasMaxLength(100);
         }
     }
 }

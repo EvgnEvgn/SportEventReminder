@@ -6,6 +6,7 @@ using SportEventReminder.Repositories.Repositories;
 using SportEventReminder.UnitOfWork;
 using Topshelf;
 using Microsoft.Extensions.Configuration;
+using SportEventReminder.ImportService.Services;
 using SportEventReminder.ScheduleService.Extensions;
 using Topshelf.HostConfigurators;
 
@@ -23,6 +24,9 @@ namespace SportEventReminder.ScheduleService
             serviceCollection.ConfigureServices(configuration);
 
             var serviceProvider = serviceCollection.BuildServiceProvider();
+
+            var importService = serviceProvider.GetService<FootballImportService>();
+            importService.UpdateAreas().GetAwaiter().GetResult();
 
             var serviceRunner = HostFactory.Run(cfg =>
             {

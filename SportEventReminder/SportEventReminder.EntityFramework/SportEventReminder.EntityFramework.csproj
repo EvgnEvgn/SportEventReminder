@@ -7,6 +7,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20190430192411_NewMigration.cs" />
     <Compile Remove="Migrations\20190430193214_NewMigration.cs" />
+    <Compile Remove="Migrations\20190502120059_Create_Tables_Team_Area_ExtSource.cs" />
+    <Compile Remove="Migrations\20190502120317_Create_Tables_Team_Area_ExtSource.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,10 +24,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SportEventReminder.Domain\SportEventReminder.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

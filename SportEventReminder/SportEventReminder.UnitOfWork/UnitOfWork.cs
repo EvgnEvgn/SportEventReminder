@@ -15,14 +15,21 @@ namespace SportEventReminder.UnitOfWork
         private readonly IServiceProvider _serviceProcProvider;
 
         public ITeamRepository TeamRepository { get; }
+        public IAreaRepository AreaRepository { get; }
+        public IExternalSourceIntegrationRepository ExternalSourceIntegrationRepository { get; }
 
         public UnitOfWork(SportEventReminderDbContext dbContext, 
                           IServiceProvider serviceProvider, 
-                          ITeamRepository teamRepository)
+                          ITeamRepository teamRepository,
+                          IAreaRepository areaRepository,
+                          IExternalSourceIntegrationRepository externalSourceIntegrationRepository)
         {
             _dbContext = dbContext;
             _serviceProcProvider = serviceProvider;
+
             TeamRepository = teamRepository;
+            AreaRepository = areaRepository;
+            ExternalSourceIntegrationRepository = externalSourceIntegrationRepository;
         }
 
         public int Commit()

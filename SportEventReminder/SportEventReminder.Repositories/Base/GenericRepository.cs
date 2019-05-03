@@ -11,7 +11,7 @@ namespace SportEventReminder.Repositories.Base
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : EntityBase<int>, new()
     {
-        private SportEventReminderDbContext _context;
+        protected SportEventReminderDbContext _context;
 
         public GenericRepository(SportEventReminderDbContext context)
         {
@@ -42,6 +42,36 @@ namespace SportEventReminder.Repositories.Base
         {
             _context.Set<T>().Add(t);
             return t;
+        }
+
+        public virtual T AddOrUpdate(T entity)
+        {
+            if (entity == null)
+            {
+                return null;
+            }
+
+            var entry = _context.Entry(entity);
+            switch (entry.State)
+            {
+                case EntityState.Detached:
+                    _context.Add(entity);
+                    break;
+                case EntityState.Modified:
+                    _context.Update(entity);
+                    break;
+                case EntityState.Added:
+                    _context.Add(entity);
+                    break;
+                case EntityState.Unchanged:
+                    //item already in db no need to do anything  
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            return entity;
         }
 
         public virtual T Find(Expression<Func<T, bool>> match)
@@ -84,7 +114,6 @@ namespace SportEventReminder.Repositories.Base
             if (exist != null)
             {
                 _context.Entry(exist).CurrentValues.SetValues(t);
-                _context.SaveChanges();
             }
 
             return exist;

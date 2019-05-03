@@ -10,7 +10,7 @@ namespace SportEventReminder.EntityFramework
 
         public DbSet<Area> Areas { get; set; }
 
-        public DbSet<ExternalSource> ExternalSources { get; set; }
+        public DbSet<ExternalSourceIntegration> ExternalSourceIntegrations { get; set; }
 
         public SportEventReminderDbContext(DbContextOptions<SportEventReminderDbContext> options) : base(options)
         {
@@ -18,7 +18,6 @@ namespace SportEventReminder.EntityFramework
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Team>().HasIndex().IsUnique();
             modelBuilder.ApplyConfiguration(new AreaConfiguration());
             modelBuilder.ApplyConfiguration(new ExternalSourceConfiguration());
             modelBuilder.ApplyConfiguration(new TeamConfiguration());

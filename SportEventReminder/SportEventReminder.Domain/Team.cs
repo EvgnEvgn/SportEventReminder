@@ -1,12 +1,13 @@
-﻿using SportEventReminder.Domain;
-
-public class Team : EntityBase<int>
+﻿namespace SportEventReminder.Domain
 {
-    public string Name { get; set; }
+    public class Team : EntityBase<int>
+    {
+        public string Name { get; set; }
 
-    public string ShortName { get; set; }
+        public string ShortName { get; set; }
 
-    public string TeamTag { get; set; }
+        public string TeamTag { get; set; }
 
-    public Area Area { get; set; }
+        public Area Area { get; set; }
+    }
 }

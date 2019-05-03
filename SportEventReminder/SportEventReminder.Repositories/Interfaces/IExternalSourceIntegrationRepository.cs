@@ -6,8 +6,7 @@ using SportEventReminder.Repositories.Base;
 
 namespace SportEventReminder.Repositories.Interfaces
 {
-    public interface ITeamRepository: IGenericRepository<Team>
+    public interface IExternalSourceIntegrationRepository : IGenericRepository<ExternalSourceIntegration>
     {
-
     }
 }

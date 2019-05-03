@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using SportEventReminder.Domain;
 
 namespace SportEventReminder.EntityFramework.DomainConfigurations
 {
