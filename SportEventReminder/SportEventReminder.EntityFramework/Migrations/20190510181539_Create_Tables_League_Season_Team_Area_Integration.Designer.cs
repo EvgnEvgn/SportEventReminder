@@ -10,8 +10,8 @@ using SportEventReminder.EntityFramework;
 namespace SportEventReminder.EntityFramework.Migrations
 {
     [DbContext(typeof(SportEventReminderDbContext))]
-    [Migration("20190503133726_added_alernate_key_for_table_Area")]
-    partial class added_alernate_key_for_table_Area
+    [Migration("20190510181539_Create_Tables_League_Season_Team_Area_Integration")]
+    partial class Create_Tables_League_Season_Team_Area_Integration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -63,6 +63,57 @@ namespace SportEventReminder.EntityFramework.Migrations
                     b.ToTable("ExternalSourceIntegrations");
                 });
 
+            modelBuilder.Entity("SportEventReminder.Domain.League", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AreaId");
+
+                    b.Property<int?>("CurrentSeasonId");
+
+                    b.Property<int>("LeagueLevel");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(200);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AreaId");
+
+                    b.HasIndex("CurrentSeasonId");
+
+                    b.HasIndex("Name")
+                        .IsUnique()
+                        .HasFilter("[Name] IS NOT NULL");
+
+                    b.ToTable("Leagues");
+                });
+
+            modelBuilder.Entity("SportEventReminder.Domain.Season", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("EndDate");
+
+                    b.Property<int?>("LeagueId");
+
+                    b.Property<DateTime>("StartDate");
+
+                    b.Property<int?>("WinnerId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LeagueId");
+
+                    b.HasIndex("WinnerId");
+
+                    b.ToTable("Seasons");
+                });
+
             modelBuilder.Entity("SportEventReminder.Domain.Team", b =>
                 {
                     b.Property<int>("Id")
@@ -89,6 +140,28 @@ namespace SportEventReminder.EntityFramework.Migrations
                         .IsUnique();
 
                     b.ToTable("Teams");
+                });
+
+            modelBuilder.Entity("SportEventReminder.Domain.League", b =>
+                {
+                    b.HasOne("SportEventReminder.Domain.Area", "Area")
+                        .WithMany()
+                        .HasForeignKey("AreaId");
+
+                    b.HasOne("SportEventReminder.Domain.Season", "CurrentSeason")
+                        .WithMany()
+                        .HasForeignKey("CurrentSeasonId");
+                });
+
+            modelBuilder.Entity("SportEventReminder.Domain.Season", b =>
+                {
+                    b.HasOne("SportEventReminder.Domain.League", "League")
+                        .WithMany("Seasons")
+                        .HasForeignKey("LeagueId");
+
+                    b.HasOne("SportEventReminder.Domain.Team", "Winner")
+                        .WithMany()
+                        .HasForeignKey("WinnerId");
                 });
 
             modelBuilder.Entity("SportEventReminder.Domain.Team", b =>

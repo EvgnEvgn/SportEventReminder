@@ -7,5 +7,7 @@ namespace SportEventReminder.ImportService.Interfaces
     public interface IFootballImporter
     {
         Task<List<AreaDto>> GetAreasAsync();
+
+        Task<List<LeagueDto>> GetLeaguesAsync();
     }
 }

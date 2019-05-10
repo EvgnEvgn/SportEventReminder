@@ -12,6 +12,10 @@ namespace SportEventReminder.EntityFramework
 
         public DbSet<ExternalSourceIntegration> ExternalSourceIntegrations { get; set; }
 
+        public DbSet<League> Leagues { get; set; }
+
+        public DbSet<Season> Seasons { get; set; }
+
         public SportEventReminderDbContext(DbContextOptions<SportEventReminderDbContext> options) : base(options)
         {
         }
@@ -21,6 +25,8 @@ namespace SportEventReminder.EntityFramework
             modelBuilder.ApplyConfiguration(new AreaConfiguration());
             modelBuilder.ApplyConfiguration(new ExternalSourceConfiguration());
             modelBuilder.ApplyConfiguration(new TeamConfiguration());
+            modelBuilder.ApplyConfiguration(new SeasonConfiguration());
+            modelBuilder.ApplyConfiguration(new LeagueConfiguration());
         }
     }
 }

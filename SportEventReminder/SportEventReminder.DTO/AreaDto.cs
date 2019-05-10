@@ -4,10 +4,8 @@ using System.Text;
 
 namespace SportEventReminder.DTO
 {
-    public class AreaDto
+    public class AreaDto : BaseDto
     {
-        public int ExternalId { get; set; }
-
         public string Name { get; set; }
 
         public string ParentArea { get; set; }

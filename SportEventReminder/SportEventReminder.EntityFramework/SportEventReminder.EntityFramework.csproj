@@ -9,6 +9,10 @@
     <Compile Remove="Migrations\20190430193214_NewMigration.cs" />
     <Compile Remove="Migrations\20190502120059_Create_Tables_Team_Area_ExtSource.cs" />
     <Compile Remove="Migrations\20190502120317_Create_Tables_Team_Area_ExtSource.cs" />
+    <Compile Remove="Migrations\20190509140517_Create_Table_Season.cs" />
+    <Compile Remove="Migrations\20190510180359_Test.cs" />
+    <Compile Remove="Migrations\20190510180639_Test.cs" />
+    <Compile Remove="Migrations\20190510180754_Fix_League_Navigations.cs" />
   </ItemGroup>
 
   <ItemGroup>

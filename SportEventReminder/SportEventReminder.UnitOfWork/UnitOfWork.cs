@@ -17,12 +17,14 @@ namespace SportEventReminder.UnitOfWork
         public ITeamRepository TeamRepository { get; }
         public IAreaRepository AreaRepository { get; }
         public IExternalSourceIntegrationRepository ExternalSourceIntegrationRepository { get; }
+        public ILeagueRepository LeagueRepository { get; }
 
         public UnitOfWork(SportEventReminderDbContext dbContext, 
                           IServiceProvider serviceProvider, 
                           ITeamRepository teamRepository,
                           IAreaRepository areaRepository,
-                          IExternalSourceIntegrationRepository externalSourceIntegrationRepository)
+                          IExternalSourceIntegrationRepository externalSourceIntegrationRepository,
+                          ILeagueRepository leagueRepository)
         {
             _dbContext = dbContext;
             _serviceProcProvider = serviceProvider;
@@ -30,6 +32,7 @@ namespace SportEventReminder.UnitOfWork
             TeamRepository = teamRepository;
             AreaRepository = areaRepository;
             ExternalSourceIntegrationRepository = externalSourceIntegrationRepository;
+            LeagueRepository = leagueRepository;
         }
 
         public int Commit()

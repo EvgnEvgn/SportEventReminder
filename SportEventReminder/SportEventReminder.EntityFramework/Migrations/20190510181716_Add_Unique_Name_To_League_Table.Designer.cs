@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SportEventReminder.EntityFramework;
 
 namespace SportEventReminder.EntityFramework.Migrations
 {
     [DbContext(typeof(SportEventReminderDbContext))]
-    partial class SportEventReminderDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190510181716_Add_Unique_Name_To_League_Table")]
+    partial class Add_Unique_Name_To_League_Table
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,6 +71,8 @@ namespace SportEventReminder.EntityFramework.Migrations
 
                     b.Property<int?>("AreaId");
 
+                    b.Property<int?>("CurrentSeasonId");
+
                     b.Property<int>("LeagueLevel");
 
                     b.Property<string>("Name")
@@ -79,7 +83,10 @@ namespace SportEventReminder.EntityFramework.Migrations
 
                     b.HasIndex("AreaId");
 
-                    b.HasIndex("Name");
+                    b.HasIndex("CurrentSeasonId");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("Leagues");
                 });
@@ -140,6 +147,10 @@ namespace SportEventReminder.EntityFramework.Migrations
                     b.HasOne("SportEventReminder.Domain.Area", "Area")
                         .WithMany()
                         .HasForeignKey("AreaId");
+
+                    b.HasOne("SportEventReminder.Domain.Season", "CurrentSeason")
+                        .WithMany()
+                        .HasForeignKey("CurrentSeasonId");
                 });
 
             modelBuilder.Entity("SportEventReminder.Domain.Season", b =>
