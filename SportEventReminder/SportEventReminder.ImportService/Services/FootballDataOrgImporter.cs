@@ -30,6 +30,7 @@ namespace SportEventReminder.ImportService.Services
         private readonly string _areaUrl = "areas";
         private readonly string _competitionUrl = "competitions";
         private readonly string _teamUrl = "teams";
+        private readonly string _matchUrl = "matches";
 
         private readonly int _sourceTimeOutInSeconds = 60;
 
@@ -102,6 +103,42 @@ namespace SportEventReminder.ImportService.Services
             return teams.Distinct(new TeamDtoComparer()).ToList();
         }
 
+        public async Task<List<MatchDto>> GetMatchesAsync()
+        {
+            var availableLeagues = _mapper.Map<List<AvailableLeague>, List<LeagueDto>>(_configuration
+                .FootballDataOrgAvailableLeagues.ToList());
+
+            var availableExternalLeaguesIds =
+                await _leagueManager.GetExternalLeaguesIds(availableLeagues, ExternalSourceEnum.FootballDataOrg);
+
+            List<MatchDto> matches = new List<MatchDto>();
+
+            foreach (var externalLeagueId in availableExternalLeaguesIds)
+            {
+                try
+                {
+                    List<MatchDto> matchesOfCurrentLeague = await GetMatchesByLeagueAsync(externalLeagueId);
+
+                    matches.AddRange(matchesOfCurrentLeague);
+                }
+                catch (FlurlHttpException ex)
+                {
+                    //TODO: переделать таймаут перед вызовом каждого метода, используя данные ответа с апи в хедере!!!
+                    ErrorContract error = await ex.GetResponseJsonAsync<ErrorContract>();
+                    if (error.ErrorCode == 429)
+                    {
+                        Thread.Sleep(_sourceTimeOutInSeconds * 1000);
+                        List<MatchDto> matchesOfCurrentLeague = await GetMatchesByLeagueAsync(externalLeagueId);
+
+                        matches.AddRange(matchesOfCurrentLeague);
+                    }
+
+                }
+            }
+
+            return matches;
+        }
+
         private async Task<List<TeamDto>> GetTeamsByCompetitionAsync(int leagueId)
         {
             var requestUrl = _competitionUrl.AppendPathSegment(leagueId).AppendPathSegment(_teamUrl);
@@ -114,6 +151,24 @@ namespace SportEventReminder.ImportService.Services
             var teamResponse = JsonConvert.DeserializeObject<TeamResponse>(result);
 
             return _mapper.Map<List<TeamContract>, List<TeamDto>>(teamResponse.Teams);
+        }
+
+        private async Task<List<MatchDto>> GetMatchesByLeagueAsync(int leagueId)
+        {
+            var requestUrl = _competitionUrl.AppendPathSegment(leagueId).AppendPathSegment(_matchUrl);
+
+            var result = await _client.Request(requestUrl).GetStringAsync();
+
+            var matchResponse = JsonConvert.DeserializeObject<MatchResponse>(result);
+
+            var matches = _mapper.Map<List<MatchContract>, List<MatchDto>>(matchResponse.Matches);
+
+            return matches.Select(x =>
+            {
+                x.League = _mapper.Map<CompetitionContract, LeagueDto>(matchResponse.Competition);
+                return x;
+
+            }).ToList();
         }
     }
 }

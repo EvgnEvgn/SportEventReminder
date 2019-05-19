@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SportEventReminder.EntityFramework;
 
 namespace SportEventReminder.EntityFramework.Migrations
 {
     [DbContext(typeof(SportEventReminderDbContext))]
-    partial class SportEventReminderDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190519191453_create_table_Match")]
+    partial class create_table_Match
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -84,33 +86,6 @@ namespace SportEventReminder.EntityFramework.Migrations
                     b.ToTable("Leagues");
                 });
 
-            modelBuilder.Entity("SportEventReminder.Domain.Match", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("AwayTeamId");
-
-                    b.Property<int?>("HomeTeamId");
-
-                    b.Property<int?>("LeagueId");
-
-                    b.Property<DateTime>("StartDate");
-
-                    b.Property<int>("Status");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AwayTeamId");
-
-                    b.HasIndex("HomeTeamId");
-
-                    b.HasIndex("LeagueId");
-
-                    b.ToTable("Match");
-                });
-
             modelBuilder.Entity("SportEventReminder.Domain.Season", b =>
                 {
                     b.Property<int>("Id")
@@ -164,21 +139,6 @@ namespace SportEventReminder.EntityFramework.Migrations
                     b.HasOne("SportEventReminder.Domain.Area", "Area")
                         .WithMany()
                         .HasForeignKey("AreaId");
-                });
-
-            modelBuilder.Entity("SportEventReminder.Domain.Match", b =>
-                {
-                    b.HasOne("SportEventReminder.Domain.Team", "AwayTeam")
-                        .WithMany()
-                        .HasForeignKey("AwayTeamId");
-
-                    b.HasOne("SportEventReminder.Domain.Team", "HomeTeam")
-                        .WithMany()
-                        .HasForeignKey("HomeTeamId");
-
-                    b.HasOne("SportEventReminder.Domain.League", "League")
-                        .WithMany()
-                        .HasForeignKey("LeagueId");
                 });
 
             modelBuilder.Entity("SportEventReminder.Domain.Season", b =>

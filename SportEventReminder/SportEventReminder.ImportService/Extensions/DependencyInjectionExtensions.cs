@@ -7,6 +7,7 @@ using SportEventReminder.ImportService.Interfaces;
 using SportEventReminder.ImportService.Services;
 using SportEventReminder.Managers.AreaManager;
 using SportEventReminder.Managers.LeagueManager;
+using SportEventReminder.Managers.MatchManager;
 using SportEventReminder.Managers.TeamManager;
 using SportEventReminder.UnitOfWork.Extensions;
 
@@ -28,7 +29,8 @@ namespace SportEventReminder.ImportService.Extensions
                 .AddScoped<IFootballImporter, FootballDataOrgImporter>()
                 .AddScoped<ILeagueManager, LeagueManager>()
                 .AddScoped<IAreaManager, AreaManager>()
-                .AddScoped<ITeamManager, TeamManager>();
+                .AddScoped<ITeamManager, TeamManager>()
+                .AddScoped<IMatchManager, MatchManager>();
 
         }
     }

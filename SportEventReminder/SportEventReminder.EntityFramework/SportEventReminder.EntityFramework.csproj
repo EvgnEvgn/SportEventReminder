@@ -13,6 +13,7 @@
     <Compile Remove="Migrations\20190510180359_Test.cs" />
     <Compile Remove="Migrations\20190510180639_Test.cs" />
     <Compile Remove="Migrations\20190510180754_Fix_League_Navigations.cs" />
+    <Compile Remove="Migrations\20190519193341_Create_Table_Match_V2.cs" />
   </ItemGroup>
 
   <ItemGroup>

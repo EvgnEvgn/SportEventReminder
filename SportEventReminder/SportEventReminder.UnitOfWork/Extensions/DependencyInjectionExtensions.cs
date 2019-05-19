@@ -18,7 +18,8 @@ namespace SportEventReminder.UnitOfWork.Extensions
                 .AddScoped<ITeamRepository, TeamRepository>()
                 .AddScoped<IAreaRepository, AreaRepository>()
                 .AddScoped<IExternalSourceIntegrationRepository, ExternalSourceIntegrationRepository>()
-                .AddScoped<ILeagueRepository, LeagueRepository>();
+                .AddScoped<ILeagueRepository, LeagueRepository>()
+                .AddScoped<IMatchRepository, MatchRepository>();
         }
 
         public static string GetDefaultConnectionString(this IConfiguration configuration)

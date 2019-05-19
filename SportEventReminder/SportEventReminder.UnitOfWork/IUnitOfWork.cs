@@ -19,5 +19,6 @@ namespace SportEventReminder.UnitOfWork
         IAreaRepository AreaRepository { get; }
         IExternalSourceIntegrationRepository ExternalSourceIntegrationRepository { get; }
         ILeagueRepository LeagueRepository {get;}
+        IMatchRepository MatchRepository { get; }
     }
 }

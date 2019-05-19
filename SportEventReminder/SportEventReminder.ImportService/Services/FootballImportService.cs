@@ -10,6 +10,7 @@ using SportEventReminder.DTO;
 using SportEventReminder.ImportService.Interfaces;
 using SportEventReminder.Managers.AreaManager;
 using SportEventReminder.Managers.LeagueManager;
+using SportEventReminder.Managers.MatchManager;
 using SportEventReminder.Managers.TeamManager;
 using SportEventReminder.UnitOfWork;
 
@@ -21,17 +22,20 @@ namespace SportEventReminder.ImportService.Services
         private readonly IAreaManager _areaManager;
         private readonly ILeagueManager _leagueManager;
         private readonly ITeamManager _teamManager;
+        private readonly IMatchManager _matchManager;
 
         public FootballImportService(IFootballImporter footballImporter,
                                      IAreaManager areaManager, 
                                      ILeagueManager leagueManager,
-                                     ITeamManager teamManager)
+                                     ITeamManager teamManager,
+                                     IMatchManager matchManager)
         {
             _footballImporter = footballImporter;
 
             _areaManager = areaManager;
             _leagueManager = leagueManager;
             _teamManager = teamManager;
+            _matchManager = matchManager;
         }
 
         public async Task UpdateAreas()
@@ -55,9 +59,11 @@ namespace SportEventReminder.ImportService.Services
             await _leagueManager.AddOrUpdate(leaguesDto);
         }
 
-        public void UpdateMatches()
+        public async Task UpdateMatches()
         {
-            throw new NotImplementedException();
+            var matchesDto = await _footballImporter.GetMatchesAsync();
+
+            await _matchManager.AddOrUpdate(matchesDto);
         }
 
         public void UpdatePlayers()

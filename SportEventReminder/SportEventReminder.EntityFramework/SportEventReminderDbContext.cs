@@ -27,6 +27,7 @@ namespace SportEventReminder.EntityFramework
             modelBuilder.ApplyConfiguration(new TeamConfiguration());
             modelBuilder.ApplyConfiguration(new SeasonConfiguration());
             modelBuilder.ApplyConfiguration(new LeagueConfiguration());
+            modelBuilder.ApplyConfiguration(new MatchConfiguration());
         }
     }
 }
