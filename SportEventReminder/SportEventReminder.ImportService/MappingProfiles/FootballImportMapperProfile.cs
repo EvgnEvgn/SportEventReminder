@@ -6,6 +6,7 @@ using SportEventReminder.Common.Enums;
 using SportEventReminder.Common.Helpers;
 using SportEventReminder.Domain;
 using SportEventReminder.DTO;
+using SportEventReminder.ImportService.Configuration;
 using SportEventReminder.ImportService.Contracts.FootballDataOrgContracts;
 using SportEventReminder.ImportService.MappingResolvers.Resolvers;
 
@@ -18,17 +19,23 @@ namespace SportEventReminder.ImportService.MappingProfiles
             CreateMap<AreaContract, AreaDto>()
                 .ForMember(dst => dst.ExternalId,opt => opt.MapFrom(src => src.Id));
             CreateMap<TeamContract, TeamDto>()
-                .ForMember(dst => dst.ExternalId,opt => opt.MapFrom(p => p.Id));
+                .ForMember(dst => dst.ExternalId,opt => opt.MapFrom(src => src.Id));
             CreateMap<SeasonContract, SeasonDto>()
-                .ForMember(dst => dst.Winner, opt => opt.MapFrom(s => s.Winner));
+                .ForMember(dst => dst.Winner, opt => opt.MapFrom(src => src.Winner));
             CreateMap<CompetitionContract, LeagueDto>()
                 .ForMember(dst => dst.LeagueLevel,opt => opt.MapFrom<LeagueLevelResolver>())
-                .ForMember(dst => dst.ExternalId, opt => opt.MapFrom(p => p.Id));
+                .ForMember(dst => dst.ExternalId, opt => opt.MapFrom(src => src.Id));
+
+            CreateMap<AvailableLeague, LeagueDto>()
+                .ForMember(dst => dst.Name, opt => opt.MapFrom(src => src.LeagueName))
+                .ForMember(dst => dst.Area, opt => opt.MapFrom<AreaDtoResolver>());
 
             CreateMap<AreaDto, Area>();
             CreateMap<SeasonDto, Season>();
             CreateMap<TeamDto, Team>();
             CreateMap<LeagueDto, League>();
+
+            
         }
     }
 }

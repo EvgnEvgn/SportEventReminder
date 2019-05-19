@@ -8,6 +8,8 @@ namespace SportEventReminder.ImportService.Contracts.FootballDataOrgContracts
     {
         public int Id { get; set; }
 
+        public AreaContract Area { get; set; }
+
         public string Name { get; set; }
 
         public string ShortName { get; set; }

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SportEventReminder.Domain\SportEventReminder.Domain.csproj" />
+    <ProjectReference Include="..\SportEventReminder.DTO\SportEventReminder.DTO.csproj" />
+    <ProjectReference Include="..\SportEventReminder.UnitOfWork\SportEventReminder.UnitOfWork.csproj" />
+  </ItemGroup>
+
+</Project>

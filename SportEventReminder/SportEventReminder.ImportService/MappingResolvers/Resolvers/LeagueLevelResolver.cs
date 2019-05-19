@@ -5,7 +5,7 @@ using SportEventReminder.ImportService.Contracts.FootballDataOrgContracts;
 
 namespace SportEventReminder.ImportService.MappingResolvers.Resolvers
 {
-    class LeagueLevelResolver : IValueResolver<CompetitionContract, LeagueDto, LeagueLevel>
+    public class LeagueLevelResolver : IValueResolver<CompetitionContract, LeagueDto, LeagueLevel>
     {
         public LeagueLevel Resolve(CompetitionContract source, LeagueDto destination, LeagueLevel destMember,
             ResolutionContext context)

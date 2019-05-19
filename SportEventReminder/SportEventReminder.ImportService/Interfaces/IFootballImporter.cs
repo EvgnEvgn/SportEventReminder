@@ -9,5 +9,7 @@ namespace SportEventReminder.ImportService.Interfaces
         Task<List<AreaDto>> GetAreasAsync();
 
         Task<List<LeagueDto>> GetLeaguesAsync();
+
+        Task<List<TeamDto>> GetTeamsAsync();
     }
 }

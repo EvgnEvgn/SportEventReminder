@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SportEventReminder.DTO\SportEventReminder.DTO.csproj" />
+    <ProjectReference Include="..\SportEventReminder.Managers\SportEventReminder.Managers.csproj" />
     <ProjectReference Include="..\SportEventReminder.UnitOfWork\SportEventReminder.UnitOfWork.csproj" />
   </ItemGroup>
 
