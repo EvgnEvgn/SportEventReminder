@@ -9,5 +9,6 @@ namespace SportEventReminder.Managers.TeamManager
     public interface ITeamManager
     {
         Task AddOrUpdate(List<TeamDto> teamsDto);
+        Task<TeamDto> GetById(int id);
     }
 }

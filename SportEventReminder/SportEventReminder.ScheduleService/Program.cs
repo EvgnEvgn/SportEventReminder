@@ -26,9 +26,9 @@ namespace SportEventReminder.ScheduleService
             var serviceProvider = serviceCollection.BuildServiceProvider();
 
             var importService = serviceProvider.GetService<FootballImportService>();
-            //importService.UpdateAreas().GetAwaiter().GetResult();
-            //importService.UpdateLeagues().GetAwaiter().GetResult();
-            //importService.UpdateTeams().GetAwaiter().GetResult();
+            importService.UpdateAreas().GetAwaiter().GetResult();
+            importService.UpdateLeagues().GetAwaiter().GetResult();
+            importService.UpdateTeams().GetAwaiter().GetResult();
             importService.UpdateMatches().GetAwaiter().GetResult();
 
             var serviceRunner = HostFactory.Run(cfg =>

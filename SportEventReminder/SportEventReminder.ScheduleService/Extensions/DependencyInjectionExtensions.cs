@@ -15,8 +15,7 @@ namespace SportEventReminder.ScheduleService.Extensions
         {
             return serviceCollection
                 .AddSingleton<ScheduleService>()
-                .AddImportServices(cfg)
-                .AddAutoMapper();
+                .AddImportServices(cfg);
         }
     }
 }

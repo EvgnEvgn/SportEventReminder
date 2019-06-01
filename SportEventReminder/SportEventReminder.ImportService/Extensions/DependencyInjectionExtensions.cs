@@ -1,4 +1,5 @@
-﻿using Flurl.Http.Configuration;
+﻿using AutoMapper;
+using Flurl.Http.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
@@ -30,7 +31,8 @@ namespace SportEventReminder.ImportService.Extensions
                 .AddScoped<ILeagueManager, LeagueManager>()
                 .AddScoped<IAreaManager, AreaManager>()
                 .AddScoped<ITeamManager, TeamManager>()
-                .AddScoped<IMatchManager, MatchManager>();
+                .AddScoped<IMatchManager, MatchManager>()
+                .AddAutoMapper();
 
         }
     }

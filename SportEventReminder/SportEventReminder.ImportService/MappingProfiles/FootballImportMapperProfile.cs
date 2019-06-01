@@ -44,6 +44,8 @@ namespace SportEventReminder.ImportService.MappingProfiles
             CreateMap<TeamDto, Team>();
             CreateMap<LeagueDto, League>();
             CreateMap<MatchDto, Match>();
+
+            CreateMap<Team, TeamDto>();
         }
     }
 }

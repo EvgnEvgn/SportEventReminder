@@ -97,5 +97,17 @@ namespace SportEventReminder.Managers.TeamManager
 
             await _unitOfWork.CommitAsync();
         }
+
+        public async Task<TeamDto> GetById(int id)
+        {
+            Team team = await _unitOfWork.TeamRepository.GetAsync(id);
+
+            if (team == null)
+            {
+                return null;
+            }
+
+            return _mapper.Map<Team, TeamDto>(team);
+        }
     }
 }
