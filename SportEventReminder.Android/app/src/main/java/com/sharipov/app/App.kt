@@ -12,7 +12,7 @@ class App : Application() {
 
     companion object {
         const val DB_NAME = "database"
-        lateinit var db: AppDatabase
+        lateinit var DB: AppDatabase
     }
 
     override fun onCreate() {
@@ -21,7 +21,7 @@ class App : Application() {
     }
 
     private fun initDb() {
-        db = Room.databaseBuilder(applicationContext, AppDatabase::class.java, DB_NAME)
+        DB = Room.databaseBuilder(applicationContext, AppDatabase::class.java, DB_NAME)
             .allowMainThreadQueries()
             .build()
     }

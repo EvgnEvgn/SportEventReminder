@@ -10,7 +10,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "Area")
 class Area(
 
-    @PrimaryKey(autoGenerate = true) var id: Int,
+    @PrimaryKey(autoGenerate = true) var id: Long? = null,
 
     @ColumnInfo(name = "Name") var name: String,
 

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.sharipov.app.R
+import kotlinx.android.synthetic.main.base_fragment_layout.*
 
 /**
  * TODO
@@ -29,6 +30,8 @@ class BaseFragment : Fragment() {
     }
 
     private fun initViews() {
-
+        dbTestButton.setOnClickListener {
+            viewModel.testDbOnClick()
+        }
     }
 }

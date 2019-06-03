@@ -10,20 +10,20 @@ import androidx.room.PrimaryKey
  * TODO
  */
 @Entity(
-    tableName = "League"/*,
-    foreignKeys = @ForeignKey(
+    tableName = "League",
+    foreignKeys = [ForeignKey(
         entity = Area::class, parentColumns = ["id"],
         childColumns = ["areaId"], onDelete = ForeignKey.CASCADE
-    )*/
+    )]
 )
 class League(
 
-    @PrimaryKey(autoGenerate = true) var id: Int,
+    @PrimaryKey(autoGenerate = true) var id: Long? = null,
 
     @ColumnInfo(name = "Name") var name: String,
 
     @ColumnInfo(name = "LeagueLevel") var leagueLevel: Int,
 
-    @ColumnInfo(name = "areaId") var areaId: Int
+    @ColumnInfo(name = "areaId") var areaId: Int?
 
 )

@@ -5,7 +5,11 @@ import androidx.room.RoomDatabase
 import com.sharipov.app.db.dao.*
 import com.sharipov.app.db.entity.*
 
-@Database(entities = [Area::class, League::class, Match::class, Season::class, Team::class], version = 1)
+@Database(
+    entities = [Area::class, League::class, Match::class, Season::class, Team::class],
+    version = 1,
+    exportSchema = false
+)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun areaDao(): AreaDao

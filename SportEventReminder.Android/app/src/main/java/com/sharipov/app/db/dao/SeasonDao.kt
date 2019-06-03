@@ -1,8 +1,6 @@
 package com.sharipov.app.db.dao
 
 import androidx.room.*
-import com.sharipov.app.db.entity.League
-import com.sharipov.app.db.entity.Match
 import com.sharipov.app.db.entity.Season
 
 @Dao
