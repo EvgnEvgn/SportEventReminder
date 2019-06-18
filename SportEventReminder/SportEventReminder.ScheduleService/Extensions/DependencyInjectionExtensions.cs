@@ -4,7 +4,9 @@ using System.Text;
 using AutoMapper;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Quartz.Spi;
 using SportEventReminder.ImportService.Extensions;
+using SportEventReminder.ScheduleService.Jobs;
 
 namespace SportEventReminder.ScheduleService.Extensions
 {
@@ -15,6 +17,8 @@ namespace SportEventReminder.ScheduleService.Extensions
         {
             return serviceCollection
                 .AddSingleton<ScheduleService>()
+                .AddScoped<IJobFactory, ScheduleJobFactory>()
+                .AddScoped<FootballImportJob>()
                 .AddImportServices(cfg);
         }
     }

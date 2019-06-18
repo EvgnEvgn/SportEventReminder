@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using SportEventReminder.Common.Configuration;
 using SportEventReminder.Common.Enums;
 using SportEventReminder.Domain;
 using SportEventReminder.DTO;
+using SportEventReminder.Managers.LeagueManager;
 using SportEventReminder.UnitOfWork;
 
 namespace SportEventReminder.Managers.MatchManager
@@ -15,11 +17,14 @@ namespace SportEventReminder.Managers.MatchManager
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly ILeagueManager _leagueManager;
 
-        public MatchManager(IUnitOfWork unitOfWork, IMapper mapper)
+        public MatchManager(IUnitOfWork unitOfWork, IMapper mapper,
+            ILeagueManager leagueManager)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _leagueManager = leagueManager;
         }
 
         public async Task AddOrUpdate(List<MatchDto> matchesDto)
@@ -137,6 +142,23 @@ namespace SportEventReminder.Managers.MatchManager
             }
 
             await _unitOfWork.CommitAsync();
+        }
+
+        public async Task<List<MatchDto>> GetScheduledMatchesAsync()
+        {
+            var availableLeagues =
+                await _leagueManager.GetAvailableLeaguesAsync();
+
+            var availableLeaguesId = availableLeagues.Select(x => x.Id).ToList();
+
+            var matches = await _unitOfWork.MatchRepository.GetScheduledMatchesByLeaguesId(availableLeaguesId);
+
+            if (matches == null)
+            {
+                return null;
+            }
+
+            return _mapper.Map<List<Match>, List<MatchDto>>(matches);
         }
     }
 }

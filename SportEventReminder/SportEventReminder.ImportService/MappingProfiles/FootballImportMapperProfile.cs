@@ -6,7 +6,7 @@ using SportEventReminder.Common.Enums;
 using SportEventReminder.Common.Helpers;
 using SportEventReminder.Domain;
 using SportEventReminder.DTO;
-using SportEventReminder.ImportService.Configuration;
+using SportEventReminder.Common.Configuration;
 using SportEventReminder.ImportService.Contracts.FootballDataOrgContracts;
 using SportEventReminder.ImportService.MappingResolvers.Resolvers;
 
@@ -46,6 +46,9 @@ namespace SportEventReminder.ImportService.MappingProfiles
             CreateMap<MatchDto, Match>();
 
             CreateMap<Team, TeamDto>();
+            CreateMap<League, LeagueDto>();
+            CreateMap<Area, AreaDto>();
+            CreateMap<Match, MatchDto>();
         }
     }
 }

@@ -6,6 +6,8 @@ using SportEventReminder.Repositories.Repositories;
 using SportEventReminder.UnitOfWork;
 using Topshelf;
 using Microsoft.Extensions.Configuration;
+using Serilog;
+using SportEventReminder.ImportService.Interfaces;
 using SportEventReminder.ImportService.Services;
 using SportEventReminder.ScheduleService.Extensions;
 using Topshelf.HostConfigurators;
@@ -20,20 +22,21 @@ namespace SportEventReminder.ScheduleService
             configurationBuilder.AddJsonFile("appSettings.json");
             IConfiguration configuration = configurationBuilder.Build();
 
+            var logger = new LoggerConfiguration()
+                .WriteTo.Console()
+                .WriteTo.File("application.log")
+                .CreateLogger();
+
             var serviceCollection = new ServiceCollection();
+            serviceCollection.AddLogging(cfg => cfg.AddSerilog(logger));
             serviceCollection.ConfigureServices(configuration);
 
             var serviceProvider = serviceCollection.BuildServiceProvider();
 
-            var importService = serviceProvider.GetService<FootballImportService>();
-            importService.UpdateAreas().GetAwaiter().GetResult();
-            importService.UpdateLeagues().GetAwaiter().GetResult();
-            importService.UpdateTeams().GetAwaiter().GetResult();
-            importService.UpdateMatches().GetAwaiter().GetResult();
-
             var serviceRunner = HostFactory.Run(cfg =>
             {
                 cfg.Service(x => serviceProvider.GetService<ScheduleService>());
+                cfg.UseSerilog(logger);
             });
 
             var exitCode = (int)Convert.ChangeType(serviceRunner, serviceRunner.GetTypeCode());

@@ -12,7 +12,7 @@ using SportEventReminder.Common.Enums;
 using SportEventReminder.Domain;
 using SportEventReminder.DTO;
 using SportEventReminder.ImportService.Comparers;
-using SportEventReminder.ImportService.Configuration;
+using SportEventReminder.Common.Configuration;
 using SportEventReminder.ImportService.Contracts.FootballDataOrgContracts;
 using SportEventReminder.ImportService.Interfaces;
 using SportEventReminder.Managers.LeagueManager;
@@ -23,7 +23,7 @@ namespace SportEventReminder.ImportService.Services
     public class FootballDataOrgImporter : IFootballImporter
     {
         private readonly IFlurlClient _client;
-        private FootballImportServiceConfiguration _configuration;
+        private readonly FootballImportServiceConfiguration _configuration;
         private readonly IMapper _mapper;
         private readonly ILeagueManager _leagueManager;
 

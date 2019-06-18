@@ -7,5 +7,6 @@ namespace SportEventReminder.Managers.MatchManager
     public interface IMatchManager
     {
         Task AddOrUpdate(List<MatchDto> matchesDto);
+        Task<List<MatchDto>> GetScheduledMatchesAsync();
     }
 }

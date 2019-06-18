@@ -35,7 +35,7 @@ namespace SportEventReminder.Managers.TeamManager
                 if (area != null)
                 {
                     var teamQueryable = _unitOfWork.TeamRepository.FindBy(t => t.Name.Equals(team.Name) &&
-                                                                                        t.Area.Id == area.Id);
+                                                                               t.Area.Id == area.Id);
 
                     if (!string.IsNullOrEmpty(team.ShortName))
                     {
@@ -69,12 +69,13 @@ namespace SportEventReminder.Managers.TeamManager
             foreach (var teamDomain in teams)
             {
                 int? teamExternalId = teamsDto.FirstOrDefault(l => l.Name.Equals(teamDomain.Name) &&
-                                                                       l.Area.Name.Equals(teamDomain.Area.Name))
+                                                                   l.Area.Name.Equals(teamDomain.Area.Name))
                     ?.ExternalId;
 
                 if (teamExternalId.HasValue)
                 {
-                    ICollection<ExternalSourceIntegration> externalSourceIntegrations = await _unitOfWork.ExternalSourceIntegrationRepository
+                    ICollection<ExternalSourceIntegration> externalSourceIntegrations = await _unitOfWork
+                        .ExternalSourceIntegrationRepository
                         .FindByAsync(esi => esi.ExternalObjectId == teamExternalId.Value &&
                                             esi.ExternalSource == ExternalSourceEnum.FootballDataOrg &&
                                             esi.ObjectId == teamDomain.Id &&
@@ -98,7 +99,7 @@ namespace SportEventReminder.Managers.TeamManager
             await _unitOfWork.CommitAsync();
         }
 
-        public async Task<TeamDto> GetById(int id)
+        public async Task<TeamDto> GetByIdAsync(int id)
         {
             Team team = await _unitOfWork.TeamRepository.GetAsync(id);
 
@@ -108,6 +109,18 @@ namespace SportEventReminder.Managers.TeamManager
             }
 
             return _mapper.Map<Team, TeamDto>(team);
+        }
+
+        public async Task<List<TeamDto>> GetAllAsync()
+        {
+            var teams = await _unitOfWork.TeamRepository.GetAllAsync();
+
+            if (teams == null)
+            {
+                return null;
+            }
+
+            return _mapper.Map<List<Team>, List<TeamDto>>(teams.ToList());
         }
     }
 }
