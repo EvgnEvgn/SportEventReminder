@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.room.Room
 import com.sharipov.app.db.AppDatabase
 
-
 class App : Application() {
 
     companion object {
