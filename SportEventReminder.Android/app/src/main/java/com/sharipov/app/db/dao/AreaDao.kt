@@ -9,9 +9,6 @@ interface AreaDao {
     @Query("SELECT * FROM Area")
     fun getAll(): List<Area>
 
-//    @Query("SELECT * FROM Area WHERE title LIKE :title")
-//    fun findByTitle(title: String): Area
-
     @Insert
     fun insertAll(vararg area: Area)
 

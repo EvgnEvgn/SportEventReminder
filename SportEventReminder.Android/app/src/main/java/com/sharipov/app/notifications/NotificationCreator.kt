@@ -20,7 +20,7 @@ class NotificationCreator {
         createNotificationChannel(context)
 
         val notification = NotificationCompat.Builder(context, CHANNEL_ID)
-            .setSmallIcon(R.mipmap.ic_launcher)
+            .setSmallIcon(R.drawable.ic_directions_run_black_24dp)
             .setContentTitle(title)
             .setAutoCancel(true)
             .setContentText(text)
