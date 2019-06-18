@@ -1,4 +1,4 @@
-package com.sharipov.app.navDrawer.viewModel
+package com.sharipov.app.settingsScreen.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.sharipov.app.R
 import com.sharipov.app.navDrawer.models.SportItem
 
-class NavDrawerViewModel : ViewModel() {
+class SettingsViewModel : ViewModel() {
 
     private val sportListLiveData: MutableLiveData<ArrayList<SportItem>> = MutableLiveData()
     private val screenNavigation: MutableLiveData<Int> = MutableLiveData()
@@ -26,6 +26,6 @@ class NavDrawerViewModel : ViewModel() {
     }
 
     fun onSettingsBtnClick() {
-        screenNavigation.postValue(R.id.settingsFragment)
+
     }
 }

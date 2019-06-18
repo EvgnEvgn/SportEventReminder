@@ -13,8 +13,10 @@ import androidx.room.PrimaryKey
 @Entity(
     tableName = "League",
     foreignKeys = [ForeignKey(
-        entity = Area::class, parentColumns = ["id"],
-        childColumns = ["areaId"], onDelete = ForeignKey.CASCADE
+        entity = Area::class,
+        parentColumns = ["id"],
+        childColumns = ["areaId"],
+        onDelete = ForeignKey.CASCADE
     )]
 )
 class League(

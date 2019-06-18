@@ -1,34 +1,21 @@
 package com.sharipov.app.baseScreen
 
-import android.util.Log
-import androidx.lifecycle.ViewModel
-import com.sharipov.app.App.Companion.DB
-import com.sharipov.app.db.dao.AreaDao
-import com.sharipov.app.db.entity.Area
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import com.sharipov.app.reminder.ReminderManager
+import com.sharipov.app.reminder.models.AlarmEvent
+import java.util.*
 
-class BaseFragmentViewModel : ViewModel() {
+class BaseFragmentViewModel(application: Application) : AndroidViewModel(application) {
+
+    private val reminderManager = ReminderManager(application)
 
     companion object {
         const val TAG = "sharipov"
     }
 
-    fun testDbOnClick() {
-        GlobalScope.launch {
-            val areaDao: AreaDao = DB.areaDao()
-
-            areaDao.getAll().forEach {
-                areaDao.delete(it)
-            }
-
-            areaDao.insertAll(
-                Area(name = "area1", parentArea = "parent1"),
-                Area(name = "area2", parentArea = "parent2")
-            )
-
-            val result = areaDao.getAll()
-            Log.d(TAG, "" + (result.size == 2))
-        }
+    fun startAlarmOnClick() {
+        val alarmEvent = AlarmEvent(Date().time + 1000 * 10, "Daga kotowary")
+        reminderManager.setAlarm(alarmEvent)
     }
 }

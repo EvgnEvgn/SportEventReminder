@@ -9,12 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sharipov.app.R
 import com.sharipov.app.navDrawer.models.SportItem
 
-/**
- * TODO
- */
 class SportListAdapter : RecyclerView.Adapter<SportListAdapter.ViewHolder>() {
 
     private val list = ArrayList<SportItem>()
+    private lateinit var listener: (SportItem) -> Unit
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -28,6 +26,15 @@ class SportListAdapter : RecyclerView.Adapter<SportListAdapter.ViewHolder>() {
 
         holder.logoImageView.setImageResource(item.icon)
         holder.textTv.text = item.name
+        holder.textTv.text = item.name
+
+        holder.textTv.setOnClickListener(onClickListener(item))
+        holder.logoImageView.setOnClickListener(onClickListener(item))
+        holder.sportListItemParent.setOnClickListener(onClickListener(item))
+    }
+
+    private fun onClickListener(item: SportItem): (View) -> Unit = {
+        listener.invoke(item)
     }
 
     fun updateItems(it: ArrayList<SportItem>) {
@@ -36,8 +43,13 @@ class SportListAdapter : RecyclerView.Adapter<SportListAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
+    fun setOnClickListener(listener: (SportItem) -> Unit) {
+        this.listener = listener
+    }
+
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textTv: TextView = view.findViewById(R.id.text)
+        val textTv: TextView = view.findViewById(R.id.text)!!
         val logoImageView: ImageView = view.findViewById(R.id.icon)!!
+        val sportListItemParent: View = view.findViewById(R.id.sportListItemParent)!!
     }
 }

@@ -5,27 +5,25 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Context.ALARM_SERVICE
 import android.content.Intent
+import com.google.gson.Gson
 import com.sharipov.app.reminder.models.AlarmEvent
 
 
-val REQUEST_CODE = 0
+const val REQUEST_CODE = 0
 
-/**
- * TODO
- */
-class ReminderManager {
+class ReminderManager(private val context: Context) {
 
-    fun setAlarm(context: Context, alarmEvent: AlarmEvent) {
+    fun setAlarm(alarmEvent: AlarmEvent) {
         val alarmManager = context.getSystemService(ALARM_SERVICE) as AlarmManager?
         val intent = Intent(context, ReminderService::class.java)
-        0
-        val pendingIntent = PendingIntent.getBroadcast(context, REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-//This alarm will trigger once approximately after 1 hour and
+        intent.putExtra(EXTRA_ALARM_EVENT, Gson().toJson(alarmEvent))
+
+        val pendingIntent = PendingIntent.getService(context, REQUEST_CODE, intent, PendingIntent.FLAG_ONE_SHOT)
+
         alarmManager!!.set(
-            AlarmManager.ELAPSED_REALTIME_WAKEUP,
-            alarmEvent.time,
+            AlarmManager.RTC_WAKEUP,
+            alarmEvent.time ,
             pendingIntent
         )
     }
-
 }

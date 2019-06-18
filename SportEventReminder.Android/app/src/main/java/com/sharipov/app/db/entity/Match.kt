@@ -10,16 +10,22 @@ import androidx.room.PrimaryKey
     tableName = "Match",
     foreignKeys = [
         ForeignKey(
-            entity = League::class, parentColumns = ["id"],
-            childColumns = ["LeagueId"], onDelete = ForeignKey.NO_ACTION
+            entity = League::class,
+            parentColumns = ["id"],
+            childColumns = ["LeagueId"],
+            onDelete = ForeignKey.NO_ACTION
         ),
         ForeignKey(
-            entity = Team::class, parentColumns = ["id"],
-            childColumns = ["HomeTeamId"], onDelete = ForeignKey.NO_ACTION
+            entity = Team::class,
+            parentColumns = ["id"],
+            childColumns = ["HomeTeamId"],
+            onDelete = ForeignKey.NO_ACTION
         ),
         ForeignKey(
-            entity = Team::class, parentColumns = ["id"],
-            childColumns = ["AwayTeamId"], onDelete = ForeignKey.NO_ACTION
+            entity = Team::class,
+            parentColumns = ["id"],
+            childColumns = ["AwayTeamId"],
+            onDelete = ForeignKey.NO_ACTION
         )
     ]
 )

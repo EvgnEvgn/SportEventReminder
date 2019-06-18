@@ -15,4 +15,14 @@
 
     </fragment>
 
+    <fragment
+            android:id="@+id/settingsFragment"
+
+            android:name="com.sharipov.app.settingsScreen.SettingsFragment"
+            android:label="SettingsFragment"
+
+            tools:layout="@layout/settings_fragment_layout">
+
+    </fragment>
+
 </navigation>
