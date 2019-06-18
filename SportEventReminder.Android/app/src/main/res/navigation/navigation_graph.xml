@@ -11,9 +11,7 @@
             android:name="com.sharipov.app.baseScreen.BaseFragment"
             android:label="Matches"
 
-            tools:layout="@layout/base_fragment_layout">
-
-    </fragment>
+            tools:layout="@layout/base_fragment_layout"/>
 
     <fragment
             android:id="@+id/settingsFragment"
@@ -21,9 +19,7 @@
             android:name="com.sharipov.app.settingsScreen.SettingsFragment"
             android:label="Settings"
 
-            tools:layout="@layout/settings_fragment_layout">
-
-    </fragment>
+            tools:layout="@layout/settings_fragment_layout"/>
 
     <fragment
             android:id="@+id/leaguesFragment"
@@ -31,9 +27,7 @@
             android:name="com.sharipov.app.leagueScreen.LeagueFragment"
             android:label="Leagues"
 
-            tools:layout="@layout/league_fragment_layout">
-
-    </fragment>
+            tools:layout="@layout/league_fragment_layout"/>
 
     <fragment
             android:id="@+id/commandsFragment"
@@ -41,8 +35,6 @@
             android:name="com.sharipov.app.commandsScreen.CommandsFragment"
             android:label="Commands"
 
-            tools:layout="@layout/commands_fragment_layout">
-
-    </fragment>
+            tools:layout="@layout/commands_fragment_layout"/>
 
 </navigation>
