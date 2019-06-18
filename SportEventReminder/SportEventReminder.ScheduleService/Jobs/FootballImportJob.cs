@@ -21,8 +21,8 @@ namespace SportEventReminder.ScheduleService.Jobs
         {
             _logger.LogInformation("Import football data!");
             await _footballImportService.UpdateAreas();
-            await _footballImportService.UpdateTeams();
             await _footballImportService.UpdateLeagues();
+            await _footballImportService.UpdateTeams();
             await _footballImportService.UpdateMatches();
         }
     }

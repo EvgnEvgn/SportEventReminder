@@ -11,11 +11,11 @@ namespace SportEventReminder.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TeamController : ControllerBase
+    public class TeamsController : ControllerBase
     {
         private readonly ITeamManager _teamManager;
 
-        public TeamController(ITeamManager teamManager)
+        public TeamsController(ITeamManager teamManager)
         {
             _teamManager = teamManager;
         }
