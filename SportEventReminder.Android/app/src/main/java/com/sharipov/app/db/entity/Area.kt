@@ -5,9 +5,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-/**
- * TODO
- */
 @Entity(tableName = "Area")
 class Area(
 

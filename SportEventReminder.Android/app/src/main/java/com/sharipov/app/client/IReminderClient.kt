@@ -6,9 +6,6 @@ import com.sharipov.app.db.entity.Match
 import com.sharipov.app.db.entity.Team
 import io.reactivex.Single
 
-/**
- * TODO
- */
 interface IReminderClient {
 
     fun fetchAreas(): Single<ArrayList<Area>>

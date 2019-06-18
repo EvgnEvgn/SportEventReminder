@@ -5,9 +5,6 @@ import androidx.room.Room
 import com.sharipov.app.db.AppDatabase
 
 
-/**
- * TODO
- */
 class App : Application() {
 
     companion object {

@@ -7,9 +7,7 @@ import com.sharipov.app.db.entity.Team
 import io.reactivex.Single
 import retrofit2.Retrofit
 
-/**
- * TODO
- */
+
 class ReminderClient(retrofit: Retrofit) : IReminderClient {
 
     init {

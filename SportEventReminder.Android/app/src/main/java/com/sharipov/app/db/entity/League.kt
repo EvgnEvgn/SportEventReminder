@@ -6,10 +6,6 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
-
-/**
- * TODO
- */
 @Entity(
     tableName = "League",
     foreignKeys = [ForeignKey(

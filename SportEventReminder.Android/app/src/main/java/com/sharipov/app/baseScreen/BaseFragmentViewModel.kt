@@ -10,12 +10,8 @@ class BaseFragmentViewModel(application: Application) : AndroidViewModel(applica
 
     private val reminderManager = ReminderManager(application)
 
-    companion object {
-        const val TAG = "sharipov"
-    }
-
     fun startAlarmOnClick() {
-        val alarmEvent = AlarmEvent(Date().time + 1000 * 10, "Daga kotowary")
+        val alarmEvent = AlarmEvent(Date().time + 1000 * 10, "Daga kotowary")//FIXME
         reminderManager.setAlarm(alarmEvent)
     }
 }
