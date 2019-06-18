@@ -16,6 +16,8 @@ namespace SportEventReminder.EntityFramework
 
         public DbSet<Season> Seasons { get; set; }
 
+        public DbSet<Match> Match { get; set; }
+
         public SportEventReminderDbContext(DbContextOptions<SportEventReminderDbContext> options) : base(options)
         {
         }

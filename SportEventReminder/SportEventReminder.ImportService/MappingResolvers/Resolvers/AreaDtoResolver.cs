@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using AutoMapper;
-using SportEventReminder.Common.Enums;
+﻿using AutoMapper;
 using SportEventReminder.DTO;
-using SportEventReminder.ImportService.Configuration;
+using SportEventReminder.Common.Configuration;
 
 namespace SportEventReminder.ImportService.MappingResolvers.Resolvers
 {

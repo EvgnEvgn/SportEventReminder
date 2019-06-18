@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using SportEventReminder.ImportService.Configuration;
 using SportEventReminder.ImportService.Extensions;
 
 namespace SportEventReminder.API
@@ -43,7 +44,12 @@ namespace SportEventReminder.API
             }
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "api/{controller=areas}/{action=Get}");
+            });
         }
     }
 }

@@ -11,20 +11,31 @@ namespace SportEventReminder.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TeamController : ControllerBase
+    public class TeamsController : ControllerBase
     {
         private readonly ITeamManager _teamManager;
 
-        public TeamController(ITeamManager teamManager)
+        public TeamsController(ITeamManager teamManager)
         {
             _teamManager = teamManager;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
+        public async Task<ActionResult<List<TeamDto>>> Get()
+        {
+            var teams = await _teamManager.GetAllAsync();
+            if (teams == null)
+            {
+                return BadRequest();
+            }
 
+            return teams;
+        }
+
+        [HttpGet("{id}")]
         public async Task<ActionResult<TeamDto>> Get(int id)
         {
-            var teamDto = await _teamManager.GetById(id);
+            var teamDto = await _teamManager.GetByIdAsync(id);
             if (teamDto == null)
             {
                 return BadRequest();

@@ -7,5 +7,6 @@ namespace SportEventReminder.Managers.AreaManager
     public interface IAreaManager
     {
         Task AddOrUpdate(List<AreaDto> areasDto);
+        Task<List<AreaDto>> GetAllAsync();
     }
 }

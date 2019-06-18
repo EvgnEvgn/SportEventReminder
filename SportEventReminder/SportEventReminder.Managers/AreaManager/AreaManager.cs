@@ -85,5 +85,17 @@ namespace SportEventReminder.Managers.AreaManager
 
             await _unitOfWork.CommitAsync();
         }
+
+        public async Task<List<AreaDto>> GetAllAsync()
+        {
+            var areas = await _unitOfWork.AreaRepository.GetAllAsync();
+
+            if (areas == null)
+            {
+                return null;
+            }
+
+            return _mapper.Map<List<Area>, List<AreaDto>>(areas.ToList());
+        }
     }
 }

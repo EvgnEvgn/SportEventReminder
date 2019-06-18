@@ -16,7 +16,7 @@ using SportEventReminder.UnitOfWork;
 
 namespace SportEventReminder.ImportService.Services
 {
-    public class FootballImportService
+    public class FootballImportService: IFootballImportService
     {
         private readonly IFootballImporter _footballImporter;
         private readonly IAreaManager _areaManager;
@@ -64,11 +64,6 @@ namespace SportEventReminder.ImportService.Services
             var matchesDto = await _footballImporter.GetMatchesAsync();
 
             await _matchManager.AddOrUpdate(matchesDto);
-        }
-
-        public void UpdatePlayers()
-        {
-            throw new NotImplementedException();
         }
     }
 }

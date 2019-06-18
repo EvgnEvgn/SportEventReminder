@@ -9,5 +9,6 @@ namespace SportEventReminder.Managers.LeagueManager
     {
         Task AddOrUpdate(List<LeagueDto> leaguesDto);
         Task<List<int>> GetExternalLeaguesIds(List<LeagueDto> leaguesDto, ExternalSourceEnum externalSource);
+        Task<List<LeagueDto>> GetAvailableLeaguesAsync();
     }
 }

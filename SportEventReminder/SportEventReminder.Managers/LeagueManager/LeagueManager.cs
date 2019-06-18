@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using SportEventReminder.Common.Configuration;
 using SportEventReminder.Common.Enums;
 using SportEventReminder.Domain;
 using SportEventReminder.DTO;
@@ -16,11 +17,13 @@ namespace SportEventReminder.Managers.LeagueManager
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly FootballImportServiceConfiguration _configuration;
 
-        public LeagueManager(IUnitOfWork unitOfWork, IMapper mapper)
+        public LeagueManager(IUnitOfWork unitOfWork, IMapper mapper, FootballImportServiceConfiguration configuration)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _configuration = configuration;
         }
 
         public async Task AddOrUpdate(List<LeagueDto> leaguesDto)
@@ -138,6 +141,33 @@ namespace SportEventReminder.Managers.LeagueManager
             }
 
             return externalLeaguesIds;
+        }
+
+        public async Task<List<LeagueDto>> GetAvailableLeaguesAsync()
+        {
+            var availableLeagues = _mapper.Map<List<AvailableLeague>, List<LeagueDto>>(_configuration
+                .FootballDataOrgAvailableLeagues.ToList());
+
+            var existedLeagues = new List<League>();
+
+            foreach (var leagueDto in availableLeagues)
+            {
+                IQueryable<League> leaguesQueryable = _unitOfWork.LeagueRepository.FindBy(l => l.Name.Equals(leagueDto.Name));
+
+                if (!string.IsNullOrEmpty(leagueDto.Area.Name))
+                {
+                    leaguesQueryable = leaguesQueryable.Where(l => l.Area.Name.Equals(leagueDto.Area.Name));
+                }
+
+                League league = await leaguesQueryable.FirstOrDefaultAsync();
+
+                if (league != null)
+                {
+                    existedLeagues.Add(league);
+                }
+            }
+
+            return _mapper.Map<List<League>, List<LeagueDto>>(existedLeagues);
         }
     }
 }

@@ -3,7 +3,7 @@ using Flurl.Http.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
-using SportEventReminder.ImportService.Configuration;
+using SportEventReminder.Common.Configuration;
 using SportEventReminder.ImportService.Interfaces;
 using SportEventReminder.ImportService.Services;
 using SportEventReminder.Managers.AreaManager;
@@ -26,7 +26,7 @@ namespace SportEventReminder.ImportService.Extensions
                     container.GetService<IOptionsSnapshot<FootballImportServiceConfiguration>>().Value)
                 .AddDataAccessLayer(cfg)
                 .AddSingleton<IFlurlClientFactory, PerHostFlurlClientFactory>()
-                .AddScoped<FootballImportService>()
+                .AddScoped<IFootballImportService, FootballImportService>()
                 .AddScoped<IFootballImporter, FootballDataOrgImporter>()
                 .AddScoped<ILeagueManager, LeagueManager>()
                 .AddScoped<IAreaManager, AreaManager>()
