@@ -3,7 +3,7 @@ package com.sharipov.app.reminder
 import android.app.IntentService
 import android.content.Intent
 import com.google.gson.Gson
-import com.sharipov.app.NotificationCreator
+import com.sharipov.app.notifications.NotificationCreator
 import com.sharipov.app.reminder.models.AlarmEvent
 
 const val EXTRA_ALARM_EVENT = "alarmEvent"

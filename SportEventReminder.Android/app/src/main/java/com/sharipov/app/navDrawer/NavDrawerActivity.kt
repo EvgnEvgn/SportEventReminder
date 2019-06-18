@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
 import com.sharipov.app.R
+import com.sharipov.app.navDrawer.adapters.SportListAdapter
 import com.sharipov.app.navDrawer.viewModel.NavDrawerViewModel
 
 class NavDrawerActivity : AppCompatActivity() {
@@ -25,7 +26,8 @@ class NavDrawerActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var settingsBtn: ImageView
 
-    private val sportListAdapter: SportListAdapter = SportListAdapter()
+    private val sportListAdapter: SportListAdapter =
+        SportListAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,8 +73,13 @@ class NavDrawerActivity : AppCompatActivity() {
         settingsBtn.setOnClickListener {
             viewModel.onSettingsBtnClick()
         }
+
         sportListAdapter.setOnClickListener {
             viewModel.onSportItemClick(it)
+        }
+
+        sportListAdapter.setSubcategoryOnClickListener {
+            viewModel.onSubcategorySelect(it)
         }
 
         sportListView.layoutManager = LinearLayoutManager(this)

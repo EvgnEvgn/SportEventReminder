@@ -5,9 +5,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(
-    tableName = "Team"
-)
+@Entity(tableName = "Team")
 class Team {
 
     @NonNull

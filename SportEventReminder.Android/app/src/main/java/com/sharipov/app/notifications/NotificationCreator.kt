@@ -1,4 +1,4 @@
-package com.sharipov.app
+package com.sharipov.app.notifications
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -7,6 +7,7 @@ import android.content.Context.MODE_PRIVATE
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import com.sharipov.app.R
 
 const val CHANNEL_ID = "Default"
 const val CHANNEL_DESCRIPTION = "Channel for sport notifications"

@@ -41,6 +41,6 @@ class Match(
 
     @ColumnInfo(name = "AwayTeamId") var awayTeamId: Long?,
 
-    @ColumnInfo(name = "Status") var status: Int
+    @ColumnInfo(name = "Status")  var status: MatchStatus
 
 )

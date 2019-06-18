@@ -25,4 +25,24 @@
 
     </fragment>
 
+    <fragment
+            android:id="@+id/leaguesFragment"
+
+            android:name="com.sharipov.app.leagueScreen.LeagueFragment"
+            android:label="LeagueFragment"
+
+            tools:layout="@layout/league_fragment_layout">
+
+    </fragment>
+
+    <fragment
+            android:id="@+id/commandsFragment"
+
+            android:name="com.sharipov.app.commandsScreen.CommandsFragment"
+            android:label="CommandsFragment"
+
+            tools:layout="@layout/commands_fragment_layout">
+
+    </fragment>
+
 </navigation>

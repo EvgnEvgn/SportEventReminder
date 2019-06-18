@@ -2,6 +2,8 @@ package com.sharipov.app.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.sharipov.app.db.converters.MatchStatusConverter
 import com.sharipov.app.db.dao.*
 import com.sharipov.app.db.entity.*
 
@@ -10,6 +12,7 @@ import com.sharipov.app.db.entity.*
     version = 1,
     exportSchema = false
 )
+@TypeConverters(MatchStatusConverter::class)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun areaDao(): AreaDao
@@ -21,6 +24,5 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun seasonDao(): SeasonDao
 
     abstract fun teamDao(): TeamDao
-
 
 }
