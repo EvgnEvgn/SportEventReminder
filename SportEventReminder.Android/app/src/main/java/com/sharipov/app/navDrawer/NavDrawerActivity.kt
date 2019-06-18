@@ -25,6 +25,7 @@ class NavDrawerActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var settingsBtn: ImageView
+    private lateinit var toolbar: Toolbar
 
     private val sportListAdapter: SportListAdapter =
         SportListAdapter()
@@ -46,12 +47,13 @@ class NavDrawerActivity : AppCompatActivity() {
         })
         viewModel.getScreenNavigation().observe(this, Observer {
             navController.navigate(it)
+            toolbar.title = navController.currentDestination?.label
             drawerLayout.closeDrawers()
         })
     }
 
     private fun initViews() {
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
         drawerLayout = findViewById(R.id.drawer_layout)

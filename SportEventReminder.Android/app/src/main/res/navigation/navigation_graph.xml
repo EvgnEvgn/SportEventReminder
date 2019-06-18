@@ -9,7 +9,7 @@
             android:id="@+id/baseFragment"
 
             android:name="com.sharipov.app.baseScreen.BaseFragment"
-            android:label="BaseFragment"
+            android:label="Matches"
 
             tools:layout="@layout/base_fragment_layout">
 
@@ -19,7 +19,7 @@
             android:id="@+id/settingsFragment"
 
             android:name="com.sharipov.app.settingsScreen.SettingsFragment"
-            android:label="SettingsFragment"
+            android:label="Settings"
 
             tools:layout="@layout/settings_fragment_layout">
 
@@ -29,7 +29,7 @@
             android:id="@+id/leaguesFragment"
 
             android:name="com.sharipov.app.leagueScreen.LeagueFragment"
-            android:label="LeagueFragment"
+            android:label="Leagues"
 
             tools:layout="@layout/league_fragment_layout">
 
@@ -39,7 +39,7 @@
             android:id="@+id/commandsFragment"
 
             android:name="com.sharipov.app.commandsScreen.CommandsFragment"
-            android:label="CommandsFragment"
+            android:label="Commands"
 
             tools:layout="@layout/commands_fragment_layout">
 
