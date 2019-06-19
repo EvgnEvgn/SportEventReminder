@@ -11,7 +11,7 @@ class BaseFragmentViewModel(application: Application) : AndroidViewModel(applica
     private val reminderManager = ReminderManager(application)
 
     fun startAlarmOnClick() {
-        val alarmEvent = AlarmEvent(Date().time + 1000 * 10, "Daga kotowary")//FIXME
+        val alarmEvent = AlarmEvent(Date().time + 1000 * 10, "CSKA 1948 Sofia game NOW!")//FIXME
         reminderManager.setAlarm(alarmEvent)
     }
 }

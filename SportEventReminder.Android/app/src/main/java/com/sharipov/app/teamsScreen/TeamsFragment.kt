@@ -1,4 +1,4 @@
-package com.sharipov.app.leagueScreen
+package com.sharipov.app.teamsScreen
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,25 +10,25 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sharipov.app.R
-import com.sharipov.app.leagueScreen.adapters.LeagueListAdapter
-import com.sharipov.app.leagueScreen.viewModel.LeagueViewModel
-import kotlinx.android.synthetic.main.league_fragment_layout.*
+import com.sharipov.app.teamsScreen.adapters.TeamsListAdapter
+import com.sharipov.app.teamsScreen.viewModel.TeamsViewModel
+import kotlinx.android.synthetic.main.teams_fragment_layout.*
 
-class LeagueFragment : Fragment() {
+class TeamsFragment : Fragment() {
 
-    private lateinit var viewModel: LeagueViewModel
-    private val adapter = LeagueListAdapter()
+    private lateinit var viewModel: TeamsViewModel
+    private val adapter = TeamsListAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(LeagueViewModel::class.java)
-        viewModel.getLeagueList().observe(this, Observer {
+        viewModel = ViewModelProviders.of(this).get(TeamsViewModel::class.java)
+        viewModel.getTeamList().observe(this, Observer {
             adapter.updateItems(it)
         })
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.league_fragment_layout, container, false)
+        inflater.inflate(R.layout.teams_fragment_layout, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,8 +36,8 @@ class LeagueFragment : Fragment() {
     }
 
     private fun initViews() {
-        leaguesList.adapter = adapter
-        leaguesList.itemAnimator = DefaultItemAnimator()
-        leaguesList.layoutManager = LinearLayoutManager(context)
+        teamsList.adapter = adapter
+        teamsList.itemAnimator = DefaultItemAnimator()
+        teamsList.layoutManager = LinearLayoutManager(context)
     }
 }

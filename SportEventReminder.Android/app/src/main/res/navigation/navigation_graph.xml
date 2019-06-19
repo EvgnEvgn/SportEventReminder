@@ -32,9 +32,9 @@
     <fragment
             android:id="@+id/commandsFragment"
 
-            android:name="com.sharipov.app.commandsScreen.CommandsFragment"
+            android:name="com.sharipov.app.teamsScreen.TeamsFragment"
             android:label="Commands"
 
-            tools:layout="@layout/commands_fragment_layout"/>
+            tools:layout="@layout/teams_fragment_layout"/>
 
 </navigation>
