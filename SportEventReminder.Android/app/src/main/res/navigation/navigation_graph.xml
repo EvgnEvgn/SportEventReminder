@@ -8,10 +8,10 @@
     <fragment
             android:id="@+id/baseFragment"
 
-            android:name="com.sharipov.app.baseScreen.BaseFragment"
+            android:name="com.sharipov.app.matchScreen.MatchFragment"
             android:label="Matches"
 
-            tools:layout="@layout/base_fragment_layout"/>
+            tools:layout="@layout/match_fragment_layout"/>
 
     <fragment
             android:id="@+id/settingsFragment"
@@ -30,10 +30,10 @@
             tools:layout="@layout/league_fragment_layout"/>
 
     <fragment
-            android:id="@+id/commandsFragment"
+            android:id="@+id/teamsFragment"
 
             android:name="com.sharipov.app.teamsScreen.TeamsFragment"
-            android:label="Commands"
+            android:label="Teams"
 
             tools:layout="@layout/teams_fragment_layout"/>
 

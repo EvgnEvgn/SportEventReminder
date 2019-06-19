@@ -15,7 +15,7 @@ class NavDrawerViewModel : ViewModel() {
     private val sportList = arrayListOf(
         SportItem(
             arrayListOf(
-                SubCategoryItem("Commands", R.id.commandsFragment),
+                SubCategoryItem("Teams", R.id.teamsFragment),
                 SubCategoryItem("Leagues", R.id.leaguesFragment)
             ),
             R.mipmap.soccer_96,

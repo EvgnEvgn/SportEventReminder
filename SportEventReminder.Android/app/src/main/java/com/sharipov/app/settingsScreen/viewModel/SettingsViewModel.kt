@@ -11,7 +11,7 @@ class SettingsViewModel : ViewModel() {
     private val mutableSettingsLiveData = MutableLiveData<ArrayList<SettingsItem>>()
 
     private val settingsList = arrayListOf(
-        SettingsItem("Remember before start (30 min.)", R.drawable.ic_event_available_black_24dp),
+        SettingsItem("Remind before start (30 min.)", R.drawable.ic_event_available_black_24dp),
         SettingsItem("Match beginning", R.drawable.ic_notifications_black_24dp, true)
     )
 
