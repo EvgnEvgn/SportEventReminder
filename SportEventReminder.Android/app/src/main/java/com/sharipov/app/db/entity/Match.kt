@@ -33,7 +33,7 @@ class Match(
 
     @NonNull @PrimaryKey(autoGenerate = false) var id: Long? = null,
 
-    @ColumnInfo(name = "LeagueId") var leagueId: Int?,
+    @ColumnInfo(name = "LeagueId") var leagueId: Long?,
 
     @ColumnInfo(name = "StartDate") var startDate: Long,
 

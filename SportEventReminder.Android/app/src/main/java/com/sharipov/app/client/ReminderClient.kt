@@ -78,10 +78,28 @@ class ReminderClient : IReminderClient {
 
     override fun saveTeams(items: ArrayList<Team>) {
         items.forEach { teamDao.updateTeam(it) }
+
+        matchDao.getAll().forEach { match ->
+            items.forEach { team ->
+                if (team.isWatched && (team.id == match.awayTeamId || team.id == match.homeTeamId)) {
+                    match.isWatched = true
+                    matchDao.updateMatch(match)
+                }
+            }
+        }
     }
 
     override fun saveLeagues(items: ArrayList<League>) {
         items.forEach { leagueDao.updateLeague(it) }
+
+        matchDao.getAll().forEach { match ->
+            items.forEach { league ->
+                if (league.isWatched && league.id == match.leagueId) {
+                    match.isWatched = true
+                    matchDao.updateMatch(match)
+                }
+            }
+        }
     }
 
     override fun saveMatches(items: ArrayList<Match>) {

@@ -55,11 +55,10 @@ class MatchViewModel(application: Application) : CustomViewModel(application) {
                             if (match.awayTeamId == it.id) {
                                 matchListItem.teamAway = it.name!!
                             }
-
                         }
 
                         leagues.forEach {
-                            if (match.leagueId == it.id!!.toInt()) {
+                            if (match.leagueId == it.id) {
                                 matchListItem.leagueString = it.name
                             }
                         }
