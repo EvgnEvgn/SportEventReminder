@@ -18,7 +18,6 @@ object Injector {
 
     val reminderClient: IReminderClient = ReminderClient()
 
-    val dataInteractor:  IDataInteractor by lazy { DataInteractor(reminderClient) }
-
+    val dataInteractor: IDataInteractor by lazy { DataInteractor(reminderClient) }
 
 }

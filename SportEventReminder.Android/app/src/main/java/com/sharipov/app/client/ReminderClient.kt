@@ -7,7 +7,7 @@ import io.reactivex.Single
 import java.util.*
 import kotlin.collections.ArrayList
 
-private const val MINUTE = 1000
+private const val MINUTE = 60 * 1000
 
 class ReminderClient : IReminderClient {
 

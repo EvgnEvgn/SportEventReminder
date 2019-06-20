@@ -14,7 +14,7 @@
             tools:ignore="GoogleAppIndexingWarning">
 
         <service
-                android:name=".reminder.ReminderService"
+                android:name=".reminder.IntervalReminderService"
                 android:exported="false">
         </service>
 

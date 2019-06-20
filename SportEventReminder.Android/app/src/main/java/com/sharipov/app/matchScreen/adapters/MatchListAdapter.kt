@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sharipov.app.R
 import com.sharipov.app.matchScreen.MatchListItem
-import java.text.DateFormat
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -78,7 +78,7 @@ class MatchListAdapter : RecyclerView.Adapter<MatchListAdapter.ViewHolder>() {
     }
 
     private fun MatchListItem.getDateString(): String {
-        val date = Date(match.startDate)
-        return DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM).format(date)
+        val formatter = SimpleDateFormat("dd.MM.y hh:mm")
+        return formatter.format(Date(match.startDate))
     }
 }

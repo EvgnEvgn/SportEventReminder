@@ -8,7 +8,7 @@ import com.sharipov.app.reminder.models.AlarmEvent
 
 const val EXTRA_ALARM_EVENT = "alarmEvent"
 
-class ReminderService : IntentService("ReminderService") {
+class ReminderService : IntentService("IntervalReminderService") {
 
     override fun onHandleIntent(intent: Intent?) {
         val alarmEvent = Gson().fromJson(intent?.getStringExtra(EXTRA_ALARM_EVENT), AlarmEvent::class.java)

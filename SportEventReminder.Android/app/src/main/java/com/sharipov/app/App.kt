@@ -3,6 +3,7 @@ package com.sharipov.app
 import android.app.Application
 import androidx.room.Room
 import com.sharipov.app.db.AppDatabase
+import com.sharipov.app.reminder.ReminderManager
 
 class App : Application() {
 
@@ -20,5 +21,14 @@ class App : Application() {
         DB = Room.databaseBuilder(applicationContext, AppDatabase::class.java, DB_NAME)
             .allowMainThreadQueries()
             .build()
+
+        initAlarm()
+    }
+
+    /**
+    1 minute
+     */
+    private fun initAlarm() {
+        ReminderManager(this).setRepeatingAlarm()
     }
 }
