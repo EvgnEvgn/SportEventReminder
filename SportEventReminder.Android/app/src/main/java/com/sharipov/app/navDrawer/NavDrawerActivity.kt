@@ -1,6 +1,7 @@
 package com.sharipov.app.navDrawer
 
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -69,6 +70,11 @@ class NavDrawerActivity : AppCompatActivity() {
     }
 
     private fun initSportListView(navView: NavigationView) {
+        val testModeBtn: View = navView.getHeaderView(0).findViewById(R.id.testModeBtn)
+        testModeBtn.setOnClickListener {
+            viewModel.onTestModeBtnClick()
+        }
+
         sportListView = navView.getHeaderView(0).findViewById(R.id.sportRecyclerView)
         settingsBtn = navView.getHeaderView(0).findViewById(R.id.settingsIcon)
 

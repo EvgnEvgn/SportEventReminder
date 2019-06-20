@@ -18,4 +18,7 @@ interface SeasonDao {
     @Update
     fun updateSeason(vararg seasons: Season)
 
+    @Query("DELETE FROM Season")
+    fun removeAll()
+
 }

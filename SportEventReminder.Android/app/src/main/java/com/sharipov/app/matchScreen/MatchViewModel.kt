@@ -1,14 +1,14 @@
 package com.sharipov.app.matchScreen
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.sharipov.app.reminder.ReminderManager
 import com.sharipov.app.reminder.models.AlarmEvent
+import com.sharipov.app.utils.CustomViewModel
 import java.util.*
 
-class MatchViewModel(application: Application) : AndroidViewModel(application) {
+class MatchViewModel(application: Application) : CustomViewModel(application) {
 
     private val reminderManager = ReminderManager(application)
 

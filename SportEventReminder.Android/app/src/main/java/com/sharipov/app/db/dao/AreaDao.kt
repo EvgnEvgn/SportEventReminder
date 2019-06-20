@@ -18,4 +18,7 @@ interface AreaDao {
     @Update
     fun updateArea(vararg areas: Area)
 
+    @Query("DELETE FROM Area")
+    fun removeAll()
+
 }

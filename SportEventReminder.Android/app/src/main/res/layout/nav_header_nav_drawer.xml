@@ -18,6 +18,18 @@
             android:orientation="vertical">
 
         <ImageView
+                android:id="@+id/testModeBtn"
+
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/ic_touch_app_black_24dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
                 android:id="@+id/settingsIcon"
 
                 android:layout_width="32dp"

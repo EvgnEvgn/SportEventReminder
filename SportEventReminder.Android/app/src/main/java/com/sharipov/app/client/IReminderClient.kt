@@ -10,10 +10,14 @@ interface IReminderClient {
 
     fun fetchAreas(): Single<ArrayList<Area>>
 
-    fun fetchTeams(area: Area): Single<ArrayList<Team>>
+    fun fetchTeams(): Single<ArrayList<Team>>
 
-    fun fetchLeagues(area: Area): Single<ArrayList<League>>
+    fun fetchLeagues(): Single<ArrayList<League>>
 
-    fun fetchMatch(league: League): Single<ArrayList<Match>>
+    fun fetchMatch(): Single<ArrayList<Match>>
+
+    fun clearAll()
+
+    fun initDefaultValues()
 
 }

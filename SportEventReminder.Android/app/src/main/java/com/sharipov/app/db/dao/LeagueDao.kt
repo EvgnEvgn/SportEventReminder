@@ -18,4 +18,7 @@ interface LeagueDao {
     @Update
     fun updateLeague(vararg league: League)
 
+    @Query("DELETE FROM League")
+    fun removeAll()
+
 }

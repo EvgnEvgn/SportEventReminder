@@ -47,7 +47,7 @@ class SportListAdapter : RecyclerView.Adapter<SportListAdapter.ViewHolder>() {
         holder.subcategoriesList.itemAnimator = DefaultItemAnimator()
 
         subcategoryAdapter.setOnClickListener {
-            subcategoryListener?.invoke(it)
+            subcategoryListener.invoke(it)
         }
 
         subcategoryAdapter.updateItems(item.subcategories)

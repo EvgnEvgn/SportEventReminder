@@ -12,6 +12,8 @@ import com.sharipov.app.settingsScreen.models.SettingsItem
 
 class SettingsListAdapter : RecyclerView.Adapter<SettingsListAdapter.ViewHolder>() {
 
+    private var onSelectListener: ((SettingsItem, Boolean) -> Unit)? = null
+
     private val list = ArrayList<SettingsItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -25,6 +27,10 @@ class SettingsListAdapter : RecyclerView.Adapter<SettingsListAdapter.ViewHolder>
         )
     }
 
+    fun setOnSelectListener(listener: (SettingsItem, Boolean) -> Unit) {
+        this.onSelectListener = listener
+    }
+
     override fun getItemCount(): Int = list.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -33,6 +39,12 @@ class SettingsListAdapter : RecyclerView.Adapter<SettingsListAdapter.ViewHolder>
         holder.logoImageView.setImageResource(item.icon)
         holder.textTv.text = item.name
         holder.chip.isChecked = item.isChecked
+
+        holder.chip.setOnCheckedChangeListener { _, isChecked ->
+            run {
+                onSelectListener?.invoke(item, isChecked)
+            }
+        }
     }
 
     fun updateItems(it: ArrayList<SettingsItem>) {

@@ -1,23 +1,27 @@
 package com.sharipov.app.settingsScreen.viewModel
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.sharipov.app.R
+import com.sharipov.app.settingsScreen.SettingsStorage
 import com.sharipov.app.settingsScreen.models.SettingsItem
+import com.sharipov.app.utils.CustomViewModel
 
-class SettingsViewModel : ViewModel() {
+class SettingsViewModel(app: Application) : CustomViewModel(app) {
+
+    private val settingsStorage = SettingsStorage(app)
 
     private val mutableSettingsLiveData = MutableLiveData<ArrayList<SettingsItem>>()
 
-    private val settingsList = arrayListOf(
-        SettingsItem("Remind before start (30 min.)", R.drawable.ic_event_available_black_24dp),
-        SettingsItem("Match beginning", R.drawable.ic_notifications_black_24dp, true)
-    )
+    init {
+        mutableSettingsLiveData.postValue(settingsStorage.settingsList)
+    }
 
     fun getSettingsList(): LiveData<ArrayList<SettingsItem>> = mutableSettingsLiveData
 
-    init {
-        mutableSettingsLiveData.postValue(settingsList)
+    fun setItemSelected(item: SettingsItem, isChecked: Boolean) {
+        item.isChecked = isChecked
+        settingsStorage.settingsList.forEach { if (it.name == item.name) it.isChecked = item.isChecked }
+        settingsStorage.saveList()
     }
 }

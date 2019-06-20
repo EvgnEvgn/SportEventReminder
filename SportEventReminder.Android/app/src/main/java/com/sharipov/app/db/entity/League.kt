@@ -25,4 +25,4 @@ class League(
 
     @ColumnInfo(name = "areaId") var areaId: Int?
 
-)
+) : WatchedEntity()

@@ -1,11 +1,12 @@
 package com.sharipov.app.teamsScreen.viewModel
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.sharipov.app.db.entity.Team
+import com.sharipov.app.utils.CustomViewModel
 
-class TeamsViewModel : ViewModel() {
+class TeamsViewModel(app: Application) : CustomViewModel(app) {
 
     private val mutableSettingsLiveData = MutableLiveData<ArrayList<Team>>()
 

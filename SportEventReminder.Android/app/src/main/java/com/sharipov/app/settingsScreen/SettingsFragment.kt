@@ -37,6 +37,9 @@ class SettingsFragment : Fragment() {
     }
 
     private fun initViews() {
+        adapter.setOnSelectListener { item, isChecked ->
+            viewModel.setItemSelected(item,isChecked)
+        }
         settingsList.adapter = adapter
         settingsList.itemAnimator = DefaultItemAnimator()
         settingsList.layoutManager = LinearLayoutManager(context)

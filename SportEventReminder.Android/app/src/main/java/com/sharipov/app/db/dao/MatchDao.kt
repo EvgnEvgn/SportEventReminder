@@ -18,4 +18,7 @@ interface MatchDao {
     @Update
     fun updateMatch(vararg matches: Match)
 
+    @Query("DELETE FROM `Match`")
+    fun removeAll()
+
 }

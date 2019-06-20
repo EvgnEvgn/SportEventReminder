@@ -43,4 +43,8 @@ class NavDrawerViewModel : ViewModel() {
     fun onSubcategorySelect(subCategoryItem: SubCategoryItem) {
         screenNavigation.postValue(subCategoryItem.screenId)
     }
+
+    fun onTestModeBtnClick() {
+        screenNavigation.postValue(R.id.testModeBtn)
+    }
 }

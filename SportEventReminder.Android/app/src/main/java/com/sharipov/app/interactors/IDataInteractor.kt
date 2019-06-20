@@ -10,10 +10,10 @@ interface IDataInteractor {
 
     fun getAreas(): Single<ArrayList<Area>>
 
-    fun getTeams(area: Area): Single<ArrayList<Team>>
+    fun getTeams(): Single<ArrayList<Team>>
 
-    fun getLeagues(area: Area): Single<ArrayList<League>>
+    fun getLeagues(): Single<ArrayList<League>>
 
-    fun getMatches(league: League): Single<ArrayList<Match>>
+    fun getMatches(): Single<ArrayList<Match>>
 
 }

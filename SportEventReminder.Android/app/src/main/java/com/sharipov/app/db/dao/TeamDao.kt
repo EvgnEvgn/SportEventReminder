@@ -18,4 +18,7 @@ interface TeamDao {
     @Update
     fun updateTeam(vararg teams: Team)
 
+    @Query("DELETE FROM Team")
+    fun removeAll()
+
 }

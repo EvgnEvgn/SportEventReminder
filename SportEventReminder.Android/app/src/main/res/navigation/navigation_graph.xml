@@ -37,4 +37,13 @@
 
             tools:layout="@layout/teams_fragment_layout"/>
 
+
+    <fragment
+            android:id="@+id/testModeFragment"
+
+            android:name="com.sharipov.app.testMode.TestModeFragment"
+            android:label="Test Mode"
+
+            tools:layout="@layout/test_mode_fragment_layout"/>
+
 </navigation>
