@@ -19,7 +19,7 @@ class ReminderManager(private val context: Context) {
         intent.putExtra(EXTRA_ALARM_EVENT, Gson().toJson(alarmEvent))
 
         val pendingIntent = PendingIntent.getService(context, REQUEST_CODE, intent, PendingIntent.FLAG_ONE_SHOT)
-
+//        alarmManager.
         alarmManager!!.set(
             AlarmManager.RTC_WAKEUP,
             alarmEvent.time ,

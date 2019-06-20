@@ -7,14 +7,17 @@ import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sharipov.app.R
-import com.sharipov.app.db.entity.Match
+import com.sharipov.app.matchScreen.MatchListItem
+import java.text.DateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class MatchListAdapter : RecyclerView.Adapter<MatchListAdapter.ViewHolder>() {
 
-    private var onSelectListener: ((Match, Boolean) -> Unit)? = null
+    private var onSelectListener: ((MatchListItem, Boolean) -> Unit)? = null
 
-    private val list = ArrayList<Match>()
+    private val list = ArrayList<MatchListItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -27,17 +30,20 @@ class MatchListAdapter : RecyclerView.Adapter<MatchListAdapter.ViewHolder>() {
         )
     }
 
-    fun setOnSelectListener(listener: (Match, Boolean) -> Unit) {
+    fun setOnSelectListener(listener: (MatchListItem, Boolean) -> Unit) {
         this.onSelectListener = listener
     }
 
     override fun getItemCount(): Int = list.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item: Match = list[position]
+        val item: MatchListItem = list[position]
 
-        holder.textTv.text = item.getMatchString()
-        holder.checkBox.isChecked = item.isWatched
+        holder.textTv.text = """${item.teamHome}  VS  ${item.teamAway}"""
+        holder.leagueTv.text = "League: " + item.leagueString
+        holder.dateTv.text = "Date: " + item.getDateString()
+
+        holder.checkBox.isChecked = item.match.isWatched
 
         holder.textTv.setOnClickListener {
             setCheckedByHands(holder)
@@ -53,7 +59,7 @@ class MatchListAdapter : RecyclerView.Adapter<MatchListAdapter.ViewHolder>() {
         }
     }
 
-    fun updateItems(it: ArrayList<Match>) {
+    fun updateItems(it: ArrayList<MatchListItem>) {
         list.clear()
         list.addAll(it)
         notifyDataSetChanged()
@@ -63,14 +69,16 @@ class MatchListAdapter : RecyclerView.Adapter<MatchListAdapter.ViewHolder>() {
         holder.checkBox.isChecked = !holder.checkBox.isChecked
     }
 
-
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textTv: TextView = view.findViewById(R.id.text)!!
+        val leagueTv: TextView = view.findViewById(R.id.leagueTv)!!
+        val dateTv: TextView = view.findViewById(R.id.dateTv)!!
         val checkBox: CheckBox = view.findViewById(R.id.checkBox)!!
         val parent: View = view.findViewById(R.id.parent)!!
     }
-}
 
-private fun Match.getMatchString(): CharSequence? {
-    return "lol"//TODO
+    private fun MatchListItem.getDateString(): String {
+        val date = Date(match.startDate)
+        return DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM).format(date)
+    }
 }
