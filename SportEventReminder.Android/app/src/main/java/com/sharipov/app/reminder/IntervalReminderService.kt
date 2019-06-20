@@ -29,7 +29,7 @@ class IntervalReminderService : IntentService("IntervalReminderService") {
                     NotificationCreator().create(
                         baseContext,
                         NOTIFICATION_TITLE,
-                        "Now: " + getMatchString(it)
+                        "In thirty minutes: " + getMatchString(it)
                     )
                 }
 
@@ -38,7 +38,7 @@ class IntervalReminderService : IntentService("IntervalReminderService") {
                     NotificationCreator().create(
                         baseContext,
                         NOTIFICATION_TITLE,
-                        "In thirty minutes: " + getMatchString(it)
+                        "Now: " + getMatchString(it)
                     )
                 }
             }
