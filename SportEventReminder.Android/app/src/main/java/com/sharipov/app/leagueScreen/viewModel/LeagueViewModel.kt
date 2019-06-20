@@ -4,19 +4,22 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.sharipov.app.db.entity.League
-import com.sharipov.app.di.Injector
-import com.sharipov.app.interactors.IDataInteractor
 import com.sharipov.app.utils.CustomViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class LeagueViewModel(app: Application) : CustomViewModel(app) {
 
-    private val interactor: IDataInteractor = Injector.dataInteractor
+    private val mutableLiveData = MutableLiveData<ArrayList<League>>()
+    private val list = ArrayList<League>()
 
-    private val mutableSettingsLiveData = MutableLiveData<ArrayList<League>>()
+    fun getLeagueList(): LiveData<ArrayList<League>> = mutableLiveData
 
-    fun getLeagueList(): LiveData<ArrayList<League>> = mutableSettingsLiveData
+    fun setOnSelectListener(league: League, checked: Boolean) {
+        league.isWatched = checked
+        list.forEach { if (it.id == league.id) it.isWatched = league.isWatched }
+        interactor.saveLeagues(list)
+    }
 
     init {
         compositeDisposable.add(interactor.getLeagues()
@@ -24,11 +27,17 @@ class LeagueViewModel(app: Application) : CustomViewModel(app) {
             .subscribeOn(Schedulers.io())
             .subscribe(
                 {
-                    mutableSettingsLiveData.postValue(it)
+                    setItems(it)
                 }, {
-                    mutableSettingsLiveData.postValue(ArrayList())
+                    setItems(ArrayList())
                 }
             )
         )
+    }
+
+    private fun setItems(it: ArrayList<League>) {
+        list.clear()
+        list.addAll(it)
+        mutableLiveData.postValue(it)
     }
 }

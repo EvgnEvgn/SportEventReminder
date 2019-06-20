@@ -36,6 +36,10 @@ class LeagueFragment : Fragment() {
     }
 
     private fun initViews() {
+        adapter.setOnSelectListener { league, isChecked ->
+            viewModel.setOnSelectListener(league, isChecked)
+        }
+
         leaguesList.adapter = adapter
         leaguesList.itemAnimator = DefaultItemAnimator()
         leaguesList.layoutManager = LinearLayoutManager(context)

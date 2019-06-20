@@ -36,6 +36,10 @@ class TeamsFragment : Fragment() {
     }
 
     private fun initViews() {
+        adapter.setOnSelectListener { team, isChecked ->
+            viewModel.setOnSelectListener(team, isChecked)
+        }
+
         teamsList.adapter = adapter
         teamsList.itemAnimator = DefaultItemAnimator()
         teamsList.layoutManager = LinearLayoutManager(context)

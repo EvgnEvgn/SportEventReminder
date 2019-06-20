@@ -16,6 +16,14 @@ interface IReminderClient {
 
     fun fetchMatch(): Single<ArrayList<Match>>
 
+    fun saveAreas(items: ArrayList<Area>)
+
+    fun saveTeams(items: ArrayList<Team>)
+
+    fun saveLeagues(items: ArrayList<League>)
+
+    fun saveMatches(items: ArrayList<Match>)
+
     fun clearAll()
 
     fun initDefaultValues()

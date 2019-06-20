@@ -72,6 +72,22 @@ class ReminderClient : IReminderClient {
         matches.forEach { matchDao.insertAll(it) }
     }
 
+    override fun saveAreas(items: ArrayList<Area>) {
+        items.forEach { areaDao.updateArea(it) }
+    }
+
+    override fun saveTeams(items: ArrayList<Team>) {
+        items.forEach { teamDao.updateTeam(it) }
+    }
+
+    override fun saveLeagues(items: ArrayList<League>) {
+        items.forEach { leagueDao.updateLeague(it) }
+    }
+
+    override fun saveMatches(items: ArrayList<Match>) {
+        items.forEach { matchDao.updateMatch(it) }
+    }
+
     override fun fetchAreas() = areaDao.getAll().toSingle()
 
     override fun fetchTeams() = teamDao.getAll().toSingle()

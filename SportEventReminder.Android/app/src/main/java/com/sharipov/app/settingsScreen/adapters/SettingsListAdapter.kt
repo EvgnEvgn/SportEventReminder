@@ -38,9 +38,9 @@ class SettingsListAdapter : RecyclerView.Adapter<SettingsListAdapter.ViewHolder>
 
         holder.logoImageView.setImageResource(item.icon)
         holder.textTv.text = item.name
-        holder.chip.isChecked = item.isChecked
+        holder.checkBox.isChecked = item.isChecked
 
-        holder.chip.setOnCheckedChangeListener { _, isChecked ->
+        holder.checkBox.setOnCheckedChangeListener { _, isChecked ->
             run {
                 onSelectListener?.invoke(item, isChecked)
             }
@@ -56,6 +56,6 @@ class SettingsListAdapter : RecyclerView.Adapter<SettingsListAdapter.ViewHolder>
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textTv: TextView = view.findViewById(R.id.text)!!
         val logoImageView: ImageView = view.findViewById(R.id.icon)!!
-        val chip: SwitchCompat = view.findViewById(R.id.chip)!!
+        val checkBox: SwitchCompat = view.findViewById(R.id.chip)!!
     }
 }

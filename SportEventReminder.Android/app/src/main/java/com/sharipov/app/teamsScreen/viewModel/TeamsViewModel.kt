@@ -11,9 +11,16 @@ import io.reactivex.schedulers.Schedulers
 
 class TeamsViewModel(app: Application) : CustomViewModel(app) {
 
-    private val mutableSettingsLiveData = MutableLiveData<ArrayList<Team>>()
+    private val mutableLiveData = MutableLiveData<ArrayList<Team>>()
+    private val list = ArrayList<Team>()
 
-    fun getTeamList(): LiveData<ArrayList<Team>> = mutableSettingsLiveData
+    fun getTeamList(): LiveData<ArrayList<Team>> = mutableLiveData
+
+    fun setOnSelectListener(team: Team, isChecked: Boolean) {
+        team.isWatched = isChecked
+        list.forEach { if (it.id == team.id) it.isWatched = team.isWatched }
+        interactor.saveTeams(list)
+    }
 
     init {
         compositeDisposable.add(
@@ -21,10 +28,16 @@ class TeamsViewModel(app: Application) : CustomViewModel(app) {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe({
-                    mutableSettingsLiveData.postValue(it)
+                    setItems(it)
                 }, {
-                    mutableSettingsLiveData.postValue(ArrayList())
+                    setItems(ArrayList())
                 })
         )
+    }
+
+    private fun setItems(it: ArrayList<Team>) {
+        list.clear()
+        list.addAll(it)
+        mutableLiveData.postValue(it)
     }
 }

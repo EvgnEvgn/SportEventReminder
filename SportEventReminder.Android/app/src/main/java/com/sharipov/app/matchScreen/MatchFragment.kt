@@ -35,6 +35,10 @@ class MatchFragment : Fragment() {
     }
 
     private fun initViews() {
+        adapter.setOnSelectListener { match, isChecked ->
+            viewModel.setOnSelectListener(match,isChecked)
+        }
+
         matchRecyclerView.adapter = adapter
         matchRecyclerView.itemAnimator = DefaultItemAnimator()
         matchRecyclerView.layoutManager = LinearLayoutManager(context)

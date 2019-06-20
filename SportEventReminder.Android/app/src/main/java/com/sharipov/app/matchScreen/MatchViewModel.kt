@@ -16,14 +16,22 @@ class MatchViewModel(application: Application) : CustomViewModel(application) {
 
     private val reminderManager = ReminderManager(application)
 
-    private val mutableMatchLiveData = MutableLiveData<ArrayList<Match>>()
+    private val mutableLiveData = MutableLiveData<ArrayList<Match>>()
+
+    private val list = ArrayList<Match>()
 
     fun startAlarmOnClick() {
         val alarmEvent = AlarmEvent(Date().time + 1000 * 10, "")//FIXME
         reminderManager.setAlarm(alarmEvent)
     }
 
-    fun getMatchList(): LiveData<ArrayList<Match>> = mutableMatchLiveData
+    fun getMatchList(): LiveData<ArrayList<Match>> = mutableLiveData
+
+    fun setOnSelectListener(match: Match, checked: Boolean) {
+        match.isWatched = checked
+        list.forEach { if (it.id == match.id) it.isWatched = match.isWatched }
+        interactor.saveMatches(list)
+    }
 
     init {
         compositeDisposable.add(
@@ -31,10 +39,16 @@ class MatchViewModel(application: Application) : CustomViewModel(application) {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe({
-                    mutableMatchLiveData.postValue(it)
+                    setItems(it)
                 }, {
-                    mutableMatchLiveData.postValue(ArrayList())
+                    setItems(ArrayList())
                 })
         )
+    }
+
+    private fun setItems(it: ArrayList<Match>) {
+        list.clear()
+        list.addAll(it)
+        mutableLiveData.postValue(it)
     }
 }

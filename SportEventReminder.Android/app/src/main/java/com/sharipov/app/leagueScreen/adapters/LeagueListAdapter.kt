@@ -11,6 +11,8 @@ import com.sharipov.app.db.entity.League
 
 class LeagueListAdapter : RecyclerView.Adapter<LeagueListAdapter.ViewHolder>() {
 
+    private var onSelectListener: ((League, Boolean) -> Unit)? = null
+
     private val list = ArrayList<League>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -24,6 +26,10 @@ class LeagueListAdapter : RecyclerView.Adapter<LeagueListAdapter.ViewHolder>() {
         )
     }
 
+    fun setOnSelectListener(listener: (League, Boolean) -> Unit) {
+        this.onSelectListener = listener
+    }
+
     override fun getItemCount(): Int = list.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -31,6 +37,23 @@ class LeagueListAdapter : RecyclerView.Adapter<LeagueListAdapter.ViewHolder>() {
 
         holder.textTv.text = item.name
         holder.checkBox.isChecked = item.isWatched
+
+        holder.textTv.setOnClickListener {
+            setCheckedByHands(holder)
+        }
+        holder.parent.setOnClickListener {
+            setCheckedByHands(holder)
+        }
+
+        holder.checkBox.setOnCheckedChangeListener { _, isChecked ->
+            run {
+                onSelectListener?.invoke(item, isChecked)
+            }
+        }
+    }
+
+    private fun setCheckedByHands(holder: ViewHolder) {
+        holder.checkBox.isChecked = !holder.checkBox.isChecked
     }
 
     fun updateItems(it: ArrayList<League>) {
@@ -42,5 +65,6 @@ class LeagueListAdapter : RecyclerView.Adapter<LeagueListAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textTv: TextView = view.findViewById(R.id.text)!!
         val checkBox: CheckBox = view.findViewById(R.id.checkBox)!!
+        val parent: View = view.findViewById(R.id.parent)!!
     }
 }

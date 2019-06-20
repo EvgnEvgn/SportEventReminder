@@ -16,4 +16,12 @@ interface IDataInteractor {
 
     fun getMatches(): Single<ArrayList<Match>>
 
+    fun saveAreas(items: ArrayList<Area>)
+
+    fun saveTeams(items: ArrayList<Team>)
+
+    fun saveLeagues(items: ArrayList<League>)
+
+    fun saveMatches(items: ArrayList<Match>)
+
 }
