@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 class Season {
 
     @NonNull
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     var id: Long? = null
 
 }

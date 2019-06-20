@@ -45,6 +45,6 @@ class NavDrawerViewModel : ViewModel() {
     }
 
     fun onTestModeBtnClick() {
-        screenNavigation.postValue(R.id.testModeBtn)
+        screenNavigation.postValue(R.id.testModeFragment)
     }
 }

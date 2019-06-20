@@ -4,7 +4,10 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.sharipov.app.db.entity.Team
+import com.sharipov.app.di.Injector
 import com.sharipov.app.utils.CustomViewModel
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class TeamsViewModel(app: Application) : CustomViewModel(app) {
 
@@ -13,13 +16,15 @@ class TeamsViewModel(app: Application) : CustomViewModel(app) {
     fun getTeamList(): LiveData<ArrayList<Team>> = mutableSettingsLiveData
 
     init {
-        val list = ArrayList<Team>()
-
-        list.add(Team(name = "CSKA 1948 Sofia", shortName = "", areaId = 1, teamTag = "Bog"))
-        list.add(Team(name = "Strumska Slava", shortName = "", areaId = 1, teamTag = "Bog"))
-        list.add(Team(name = "Orenburg", shortName = "", areaId = 1, teamTag = "Ros"))
-        list.add(Team(name = "CHFR", shortName = "", areaId = 1, teamTag = "Rum"))
-
-        mutableSettingsLiveData.postValue(list)
+        compositeDisposable.add(
+            Injector.dataInteractor.getTeams()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe({
+                    mutableSettingsLiveData.postValue(it)
+                }, {
+                    mutableSettingsLiveData.postValue(ArrayList())
+                })
+        )
     }
 }

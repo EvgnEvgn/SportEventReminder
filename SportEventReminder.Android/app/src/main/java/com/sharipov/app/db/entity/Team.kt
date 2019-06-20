@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey
 class Team(
 
     @NonNull
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "id", index = true)
     var id: Long = 0,
 
@@ -21,4 +21,4 @@ class Team(
 
     @ColumnInfo(name = "TeamTag") var teamTag: String?
 
-)
+) : WatchedEntity()

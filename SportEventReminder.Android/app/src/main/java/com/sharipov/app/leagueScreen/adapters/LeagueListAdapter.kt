@@ -30,6 +30,7 @@ class LeagueListAdapter : RecyclerView.Adapter<LeagueListAdapter.ViewHolder>() {
         val item: League = list[position]
 
         holder.textTv.text = item.name
+        holder.checkBox.isChecked = item.isWatched
     }
 
     fun updateItems(it: ArrayList<League>) {

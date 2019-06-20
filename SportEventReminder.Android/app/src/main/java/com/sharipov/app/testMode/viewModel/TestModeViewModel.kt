@@ -5,11 +5,8 @@ import com.sharipov.app.di.Injector
 
 class TestModeViewModel : ViewModel() {
 
-    init {
-
-    }
-
     fun onInitBbBtn() {
+        Injector.reminderClient.clearAll()
         Injector.reminderClient.initDefaultValues()
     }
 

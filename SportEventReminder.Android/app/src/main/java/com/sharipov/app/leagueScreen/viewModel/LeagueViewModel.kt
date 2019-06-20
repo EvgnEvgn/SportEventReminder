@@ -24,21 +24,11 @@ class LeagueViewModel(app: Application) : CustomViewModel(app) {
             .subscribeOn(Schedulers.io())
             .subscribe(
                 {
-
+                    mutableSettingsLiveData.postValue(it)
                 }, {
-
+                    mutableSettingsLiveData.postValue(ArrayList())
                 }
             )
         )
-
-        val list = ArrayList<League>()
-
-        list.add(League(name = "America Cup", leagueLevel = 0, areaId = 0))
-        list.add(League(name = "Argentina Cup", leagueLevel = 0, areaId = 0))
-        list.add(League(name = "Russia Cup", leagueLevel = 0, areaId = 0))
-        list.add(League(name = "Gorgia Cup", leagueLevel = 0, areaId = 0))
-
-        mutableSettingsLiveData.postValue(list)
-
     }
 }

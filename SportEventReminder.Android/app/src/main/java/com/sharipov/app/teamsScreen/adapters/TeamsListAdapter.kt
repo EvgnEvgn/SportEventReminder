@@ -30,6 +30,7 @@ class TeamsListAdapter : RecyclerView.Adapter<TeamsListAdapter.ViewHolder>() {
         val item: Team = list[position]
 
         holder.textTv.text = item.name
+        holder.checkBox.isChecked = item.isWatched
     }
 
     fun updateItems(it: ArrayList<Team>) {

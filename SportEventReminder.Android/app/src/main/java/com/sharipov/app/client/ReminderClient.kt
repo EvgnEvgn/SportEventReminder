@@ -52,8 +52,8 @@ class ReminderClient : IReminderClient {
         Match(4, homeTeamId = 3, awayTeamId = 0, leagueId = 1, status = Scheduled, startDate = time() + 10 * MINUTE),
         Match(5, homeTeamId = 3, awayTeamId = 4, leagueId = 1, status = Scheduled, startDate = time() + 33 * MINUTE),
         Match(6, homeTeamId = 4, awayTeamId = 0, leagueId = 1, status = Scheduled, startDate = time() + 35 * MINUTE),
-        Match(7, homeTeamId = 4, awayTeamId = 1, leagueId = 1, status = Scheduled, startDate = time() + 33 * MINUTE),
-        Match(7, homeTeamId = 4, awayTeamId = 2, leagueId = 1, status = Scheduled, startDate = time() + 40 * MINUTE)
+        Match(8, homeTeamId = 4, awayTeamId = 1, leagueId = 1, status = Scheduled, startDate = time() + 33 * MINUTE),
+        Match(9, homeTeamId = 4, awayTeamId = 2, leagueId = 1, status = Scheduled, startDate = time() + 40 * MINUTE)
     )
 
     override fun clearAll() {
