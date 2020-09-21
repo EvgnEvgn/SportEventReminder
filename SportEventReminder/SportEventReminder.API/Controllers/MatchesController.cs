@@ -14,6 +14,7 @@ namespace SportEventReminder.API.Controllers
     public class MatchesController : ControllerBase
     {
         private readonly IMatchManager _matchManager;
+        private readonly IMatchManager _matchManager1;
 
         public MatchesController(IMatchManager matchManager)
         {
