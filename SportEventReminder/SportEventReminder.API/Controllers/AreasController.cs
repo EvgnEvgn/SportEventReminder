@@ -11,6 +11,7 @@ namespace SportEventReminder.API.Controllers
     public class AreasController : ControllerBase
     {
         private readonly IAreaManager _areaManager;
+        private readonly IAreaManager _areaManager1;
 
         public AreasController(IAreaManager areaManager)
         {
