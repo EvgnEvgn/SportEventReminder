@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using SportEventReminder.Common.Configuration;
 using SportEventReminder.ImportService.Interfaces;
+using SportEventReminder.ImportService.MappingProfiles;
 using SportEventReminder.ImportService.Services;
 using SportEventReminder.Managers.AreaManager;
 using SportEventReminder.Managers.LeagueManager;
@@ -32,7 +33,7 @@ namespace SportEventReminder.ImportService.Extensions
                 .AddScoped<IAreaManager, AreaManager>()
                 .AddScoped<ITeamManager, TeamManager>()
                 .AddScoped<IMatchManager, MatchManager>()
-                .AddAutoMapper();
+                .AddAutoMapper(typeof(FootballImportMapperProfile));
 
         }
     }

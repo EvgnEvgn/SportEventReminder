@@ -15,10 +15,10 @@ namespace SportEventReminder.EntityFramework
                 .AddJsonFile("appsettings.json")
                 .Build();
             string connectionString = configuration.GetConnectionString("DefaultConnection");
-
+    
             var builder = new DbContextOptionsBuilder<SportEventReminderDbContext>();
             builder.UseSqlServer(connectionString);
-
+    
             return new SportEventReminderDbContext(builder.Options);
         }
     }
