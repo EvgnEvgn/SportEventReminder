@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.539
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportEventReminder", "SportEventReminder\SportEventReminder.csproj", "{1F02BE29-492C-4BF5-8004-A7821A4F2D34}"
 EndProject
@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportEventReminder.DTO", "S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportEventReminder.Managers", "SportEventReminder.Managers\SportEventReminder.Managers.csproj", "{D8939319-0E42-46D3-83CD-A6EC78F85637}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportEventReminder.API", "SportEventReminder.API\SportEventReminder.API.csproj", "{4F96C2F0-71A1-4BCF-A589-301E94A82E32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportEventReminder.API", "SportEventReminder.API\SportEventReminder.API.csproj", "{4F96C2F0-71A1-4BCF-A589-301E94A82E32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkerScheduleService", "WorkerScheduleService\WorkerScheduleService.csproj", "{3FDB6586-5B80-4847-8004-835724C47F5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{4F96C2F0-71A1-4BCF-A589-301E94A82E32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F96C2F0-71A1-4BCF-A589-301E94A82E32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F96C2F0-71A1-4BCF-A589-301E94A82E32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FDB6586-5B80-4847-8004-835724C47F5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FDB6586-5B80-4847-8004-835724C47F5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FDB6586-5B80-4847-8004-835724C47F5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FDB6586-5B80-4847-8004-835724C47F5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

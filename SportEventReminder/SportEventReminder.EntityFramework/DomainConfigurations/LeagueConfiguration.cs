@@ -10,7 +10,7 @@ namespace SportEventReminder.EntityFramework.DomainConfigurations
         {
             builder.HasIndex(p => p.Name);
             builder.Property(p => p.Name).HasMaxLength(200).IsRequired();
-            builder.HasMany(p => p.Seasons).WithOne(p => p.League).OnDelete(Del);
+            builder.HasMany(p => p.Seasons).WithOne(p => p.League);
         }
     }
 }
